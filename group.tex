@@ -1,0 +1,136 @@
+\documentclass[12pt]{book}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{chngpage}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{amssymb}
+
+\usepackage{wrapfig}
+\usepackage{enumerate}
+\usepackage{braket}
+\usepackage{bbm}
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+
+\usepackage{wrapfig,lipsum,booktabs}
+\input{insbox.tex}
+
+
+\usetikzlibrary{decorations.markings}
+
+\theoremstyle{plain}
+
+%\numberwithin{equation}{section}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\I}{\mathbbm{1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\Sum}{\sum_{n=0}^\infty}
+\newcommand{\Res}[1]{\text{Res}f(z)\Big|_{#1}}
+\newcommand{\vettore}[1]{\overrightarrow{#1}}
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\x}{\mathbf{x}}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposizione}
+\newtheorem{coro}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives
+\newcommand{\dd}[2]{\frac{d^2 #1}{d #2^2}} % for double derivatives
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} 
+% for partial derivatives
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}} 
+% for double partial derivatives
+
+\title{\textbf{Group theory and matrix analysis}}
+\author{Marco Canteri}
+\date{2017}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+
+\usepackage[a4paper, inner=1.5cm, outer=3cm, top=3cm, 
+bottom=3cm, bindingoffset=1cm,headheight=110pt]{geometry} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\leftmark}
+\fancyhead[RO]{\rightmark}
+\fancyfoot[C]{\thepage}
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Group theory and representation theory}
+\section{Fundamentals of groups}
+Group theory is a branch of mathematics that study \emph{Groups}, groups are useful, for instance, to describe symmetries in a system. In physics, symmetries have a central role, a problem can be simplified in presence of symmetries and some physical quantities are directly correlated to symmetries. Therefore, the study of group is indeed important in theoretical physics.
+Let us start from the beginning by defining what is a group
+\begin{dfn}
+Let $G$ be a set and $u$ a map $u:G\times G\to G$, then the pair $(G,u)$ is called a \textbf{group} if the following conditions hold
+\begin{enumerate}[i.]
+\item (Associative) $g(fh) = (gf)h$;
+\item (Neutral element) $\exists e\in G: eg=ge=g\quad\forall g\in G$;
+\item (Inverse element) $\forall g\in G\,$ $\exists g^{-1}\in G: gg^{-1} = g^{-1}g=e$;
+\end{enumerate}
+notice that the map $u$ is usually represented like the standard multiplication $gh:=u(g,h)$ and very often we call $G$ a group instead of the pair $(G,u)$.
+\end{dfn}
+\begin{dfn}
+A group $G$ is called \textbf{Abelian} if $gh=hg\quad \forall g,h\in G$.
+\end{dfn}
+A group can have several proprieties, one of the most important is the order of a group, which can be defined as follow
+\begin{dfn}
+The \textbf{order} of a group $G$ is the number of elements of $G$ (cardinality) and it is denoted as $|G|$. 
+\end{dfn}
+There are two cases, either the order of a group is finite (or countable infinite), and in this case the group is called discrete, or the order in not finite (uncountable infinite) and we say that the group is continuous. In order to clarify what is a group let us do some interesting examples of a group:
+\begin{itemize}
+\item $G = \Z_2 = \{-1,1\}$ and $u$ the standard multiplication.\\
+ We need to check that this is a group, first of all the map $u$ must be closed with respect to the set, this is easy to show, in fact there are only two elements and with the standard multiplication we know that multiplying $-1$ for $1$ or vice versa will always end up with -1. The standard multiplication is also associative. The neutral element of this group is $1$ and the inverse of $g\in G$ in this group is $g$ itself. Therefore, this is a finite group.
+\item $G = \{z\in \C : |z|=1\}$, $u$ standard multiplication.\\
+This is also a group, in fact we can represent a complex number with a complex exponential $z=e^{i\theta}$, multiplying two complex number will only change the phase of the number, not the modulus, thus multiplication is closed. It is also associative, the neutral element is $1$ and the inverse element is the complex conjugate $zz^* = |z|^2 = 1$.
+\item $G = \{e,a,a^2,a^3\}$ with $a^4=e$ and also $a^0=e$, with the map defined as $u(a^k,a^l) = a^{k+l}$.\\
+It is closed, associative, the neutral element is $e$ and the inverses are: $aa^3 = e$, $a^2a^2=e$, $a^3a=e$. Therefore, this is a group of order 4.
+\item $G = GL(n,\C) = \{A\in M_n(\C): \text{det}A\neq 0\}$ and $u$ is matrix multiplication. Note that $GL(n,\C)$ is usually called General Linear group and is the set of $n\times n$ invertible matrices.\\
+$u$ is closed, associative, the neutral element is $\mathbbm{1}$ and the inverse is the inverse matrix $A^{-1}\in G$. Hence, this is a group.
+\item $G = \{U\in M_n : U^{-1}U = \I\}$, i.e. the set of unitary matrices with the matrix multiplication.\\
+The product of two unitary matrices is still unitary, so the map is closed. It is also associative, the neutral element is $\I$ and the inverse is $U^\dagger$. Therefore, it is a group.
+\end{itemize}
+A particular class of Group is the so called symmetric groups. Given $n$ elements $\overline{G}=\{1,2,\dots,n\}$, the symmetric group is defined as the set of permutations $\Pi:\overline{G}\to \overline{G}$, which we can write as $S_n = \{\Pi:\overline{G}\to \overline{G}: \text{where } \Pi \text{ is a bijective permutation}\}$. If $u$ is the concatenation of two permutations, then $(S_n,u)$ is a symmetric group. In fact $u$ is associative, the neutral element is the identity map, and the inverse element is $\Pi^{-1}$, which exist because permutations are bijective. Note also that the order of a symmetric group is $n!$, indeed there are $n!$ possible permutations in a set with $n$ elements. For instance, let us take $S_3$, we will denote the permutation as $\Pi_{1,2}\equiv (1,2)$, i.e the permutation that swap 1 with 2: $1\to 2,2\to 1,3\to3$, and $(1,2,3)$ as the permutation that changes every number like this: $1\to2,2\to3,3\to1$. Therefore the set $S_3$ is the following
+\[S_3 = \{\I,(1,2),(2,3),(1,2,3),(1,3,2),(1,3)\}\]
+there are of course $3!=6$ elements which correspond to the symmetry of a triangle, as we will see later in more detail.\\ 
+We can also define a dihedral group $D_n,n\geq 3$ which denotes the orthogonal symmetries of a regular polygon, which has $n$ vertices and is centered in the origin. The vertices are denoted by $V_0,V_1,\dots,V_{n-1}\in\R^2$ in counter clockwise direction. The symmetries of a polygon are: $C_n = R_{\frac{2\pi}{n}}$, that is a counter clockwise rotation of angle $2\pi/n$; $\sigma^{(i)}$, that is a reflection with respect to the line through $V_i$ and the center. Therefore, we can write $D_n$ as
+\[D_n = \{\I, C_n,C_n^2,\dots,C_n^{n-1},\sigma^{(i)},C_n\sigma^{(i)},\dots C_n^{n-1}\sigma^{(i)} \}\]
+as can be easily seen, the order of this group is $|D_n| = 2n$. In the case $n=3$ we would have $D_3 = \{\I,C_3,C_3^2,\sigma^{(1)},C_3\sigma^{(1)},C_3\sigma^{(1)}\}$, notice that for instance $\sigma^{(3)} = C_3 \sigma^{(1)}$. Moreover, in this case we have that $S_3 = D_3$, in fact we can denotes every vertex of a triangle with a number and exchanging numbers is equivalent of rotating of reflecting the triangle.
+\InsertBoxR{0}{
+  \begin{minipage}{5.5cm}
+\begin{tabular}{c|cccc}
+G & $g_1$ & $g_2$ &  & $g_n$ \\
+\hline 
+$g_1$ &$g_1g_1$ & $g_1g_2$ &\dots& $g_1g_n$\\  
+$g_2$ &$g_2g_1$ & $g_2g_2$ & & $g_2g_n$\\ 
+\vdots\\
+$g_n$ &$g_ng_1$ & $g_ng_2$ & & $g_ng_n$\\ 
+\end{tabular}
+\end{minipage}}[3]In the case of finite group, $u$ doesn't have to follow any algebraic rules. Hence, it is sometimes convenient to write $u(g_i,g_j)$ for $g_i,g_j\in G$ into a table. Due to the existence of the neutral element, there exist one row (column) which coincides with the first row (column). Furthermore, due to the existence of the inverse element, each row and each column contains all $n$ elements. In fact, suppose that there exist $i$ such that one element occurs at least twice in the $i$-th row, i.e. $\exists j\neq k : g_ig_j = g_ig_k$.  Then it also true that $g_i^{-1}g_ig_j = g_i^{-1}g_ig_k \implies g_j = g_k$ which is a contradiction. Therefore, all the $n$ elements of the $i$-th row must be different, that is each row contains all $n$ element of $G$. The same argument can be done with a column. From this we can say that the multiplication of $g_i$ corresponds to a permutation $\Pi_{g_i}$ of the $n$ elements of $G$.
+\section{Subgroups}
+
+
+
+
+
+
+\end{document}
