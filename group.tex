@@ -192,4 +192,108 @@ $Z$ is always not empty, in fact it contains at least the neutral element of $G$
 \begin{dfn}
 Conjugate elements $a,b\in G$ are called \textbf{conjugate} to each other if $\exists g\in G:a=gbg^{-1}$.
 \end{dfn}
+Before continuing, let us recall what a equivalent relation is. It is denoted by $\sim$ and it satisfies the following proprieties
+\begin{enumerate}
+	\item (reflex) $a \sim a$
+	\item (symmetric) $a\sim b \iff b\sim a$
+	\item (transitive) $a\sim b$ and $b\sim c$ $\implies a\sim c$
+\end{enumerate}
+Let us go back to conjugation, it is easy to prove that conjugation defines an equivalent relation. In fact:
+\begin{itemize}
+\item $a\sim a$, we can choose $g=e$, and we have $a=a$
+\item $a\sim b \implies \exists g\in G: a=gbg^{-1} \implies b = g^{-1}ag \implies b\sim a$
+\item $a=g_1bg^{-1}_1,b=g_2cg_2^{-1}\implies a = g_1g_2cg_1^{-1}g_2^{-1}\implies a = g_3cg_3$
+\end{itemize}
+\begin{dfn}
+The \textbf{conjugacy class} of an element $a\in G$ is defined as
+\[K_a = \{gag^{-1}:g\in G\}\]
+\end{dfn} 
+If we choose $g=e$, we immediately find that $a\in K_a$.
+\begin{thm}
+Any group can be decomposed in disjoint conjugacy classes $K_i$. Let $n(K_i)$ denote the cardinality of $K_i$, then it holds that $|G| = \sum_i n(K_i)$
+\end{thm}
+The proof is left to the reader as exercise.
+\begin{thm}
+The number of elements of a conjugacy class $n(K_i)$ divides $|G|$
+\end{thm} 
+The proof is left to the reader as exercise.
+\begin{coro}
+If $|G|$ is prime, then $n(K_i)=1\, \forall K_i \implies G$ is abelian.
+\end{coro}
+\section{Homomorphism and isomorphism}
+Before jumping into representation theory is necessary to define and understand what homomorphism and isomorphism are in group theory.
+\begin{dfn}
+Let $G,H$ be groups, then a function $f:G\to H$ is called \textbf{group homomorphism} (GH) if
+\[f(g_1g_2) = f(g_1)f(g_2)\in H\quad \forall g_1,g_2\in G\]
+\end{dfn}
+\begin{dfn}
+Let $G,H$ be groups, then a function $f:G\to H$ is called \textbf{group isomorphism} (GI) if it is bijective. And we write $G\simeq H$
+\end{dfn}
+Furthermore, the following hold
+\begin{enumerate}
+	\item $f(e_G) = e_H$, in fact $f(g) = f(e_Gg)=f(e_G)f(g)\,\forall g$, hence $f(e_G)$ must be $e_H$.
+	\item $f(g^{-1}) = f(g)^{-1}$, in fact $f(gg^{-1})=f(e_G) = e_H \implies f(g)f(g^{-1}) = e_H \implies f(g^{-1}) = f(g)^{-1}$.
+	\item if $f$ is a GI, then $f^{-1}$ is a GI.
+\end{enumerate}
+Let us do some examples with of homomorphisms and isomorphisms.
+\begin{itemize}
+\item The determinant of a matrix $\text{det}:GL(n,\C) \to \C$ is a GH, in fact from the well known propriety of determinant $|AB| = |A||B|$.
+\item Let $G$ be a group and $g\in G$, the function $f:\Z \to G,k\mapsto g^k$ is a GH. In fact, $f(k_1k_2) = g^{k_1+k_2} = g^{k_1}g^{k_2} = f(k_1)f(k_2)$. (Recall that for the group $\Z$ we can choose as map the addition)
+\item the exponential $\R\to \R^+, x\mapsto e^x$ is a GI.
+\end{itemize}
+\begin{dfn}
+Let $G,H$ be groups and $f:G\to H$ a GH, then we define the \textbf{kernel} of $f$ as
+\[\text{Ker}(f) = \{g\in G:f(g)=e_H\}\]
+Moreover, we define the \textbf{range} of $f$ as
+\[R(f) = \{f(a):a\in G\}\]
+\end{dfn}
+From this definitions it is easy to derive that the kernel is a subgroup of $G$, while the range is a subgroup of $H$. Indeed, if $g_1,g_2\in \text{Ker}(f)\implies f(g_1)=f(g_2)=e_H$, but due to the fact that $f$ is a GH, it is also true that $f(g_1g_2) = f(g_1)f(g_2)=e_H$. Therefore, $g_1g_2\in \text{Ker}(f)$. Furthermore, $e_G\in \text{Ker}(f)$, in fact $f(e_G) ) e_H$. And finally if $g\in \text{Ker}(f)\implies f(g^{-1}) = f(g)^{-1} = e_H^{-1} = e_H$, therefore $g^{-1}\in\text{Ker}(f)$. This prove the properties of a group and thus $\text{Ker}(f)\leq G$. Similarly can be demonstrated also that $R(f)\leq H$. Moreover, if $f$ is also injective, then $\text{Ker}(f) = \{e_G\}$ and if $f$ is subjective, then $R(f) = H$. \\
+In the first section of this chapter we did some examples of groups, in particular we studied the symmetric group, Its central importance in group theory is due to the following theorem that connects finite group to symmetric group through an isomorphic map. Furthermore, groups can be represented by matrices via an homomorphic map, as we will see later.
+\begin{thm}
+(Theorem of Cayley for finite groups) Every finite group of order $n$ is isomorphic to a subgroup of the symmetric group $S_n$.
+\end{thm}
+The proof is based on the representation of a group with a group table. Each column and each row contains all elements of $G$. Hence, multiplication of a row or a columns with an element of $G$ corresponds to a permutation of the element of $G$. $g\mapsto \Pi_g, G\to H\leq S_n$ is a GI.
+\section{Representation of groups}
+The elements of a group can be very abstract object with which it could be difficult to work with. However, it is possible to map group into matrices that can be manipulated more easily. This mapping is the aim of representation theory, it can be proved that a group has infinity many representation. Let us start as usual, by defining a representation.
+\begin{dfn}
+A representation $D$ of a group $G$ is a GH $D:G\to GL_k(V)$, where $GL_k(V)$ is the group of general linear function over a vector space $V$. 
+\end{dfn} 
+It can be showed that $GL_k(V)$ is isomorphic to $GL_n(\C)$, which are invertible matrices. Therefore, $D$ maps the group $G$ into invertible $n\times n$ matrices, where $n= \text{dim}(n)$.
+Some remarks, $V$ is called carrier (representation) space and $\text{dim}(n)$ is called the dimension of the representation. As notation we use $D_G$ or $D(G)$ for the representation and in the rest of this work we will consider only finite dimensional representation. \\
+Every group $G$ has a \emph{trivial representation}, that is $D:G\to \C \simeq GL_1,g\mapsto 1$. It easy to check that this is indeed a representation, however all the information about the group is lost. This trivial representation is one dimensional, but it is also possible to define a trivial representation in higher dimension (cazzo, molto utile).
+\begin{dfn}
+A representation $D$ is called \textbf{faithful} if $D$ is injective.
+\end{dfn}
+As already said, a group can have different representation, but two representation  $D_1:G\to GL(V),D_2:G\to GL(W)$ are called equivalent if there exists a mapping $f:W\to V$ which is an isomorphism
+\[D_1(g) = f\circ D_2(g)\circ f^{-1}\quad \forall g\in G.\]
+Before looking at some example, notice that, since $D$ is a GH, it holds that $D(g_1g_2)=D(g_1)D(g_2)$ for any representation $D$. Therefore, $D(g)$ can be computed from $D(g_i)$, where $g_i$ are the generating element, $G =\braket{\{g_i\}}$. For instance, let us consider $S_3 \simeq D_3 = \braket{\{\sigma^1,C_3\}}$, we can compute $D_3(C_3^2) = D_3(C_3)D_3(C_3)$, where $D_3(C_3)$ is known. The same for $D_3(C_3^{-1})=D_3(C_3)^{-1}$. \\
+Let us go through some instances of representation of the group $S_3$.
+\begin{itemize}
+\item A two dimensional representation of $S_3$ could be the following $D_2:S_3 \to GL_2$:
+\[C_3 \mapsto \begin{pmatrix}
+  \cos\left(\frac{2\pi}{3}\right) & \sin\left(\frac{2\pi}{3}\right) \\
+  -\sin\left(\frac{2\pi}{3}\right) & \cos\left(\frac{2\pi}{3}\right) 
+ \end{pmatrix} \qquad \sigma^1 =  \begin{pmatrix}
+ -1& 0 \\
+0 & 1
+ \end{pmatrix}.\]
+This representation is also faithful.
+\item A one dimensional representation is the map
+\[C_3 \mapsto 1\qquad \sigma^1 \mapsto 1,\]
+which is a trivial representation.
+\item Another non trivial one dimensional representation is
+\[C_3\mapsto 1 \qquad \sigma^1 \mapsto -1.\]
+The number are not chosen randomly, but they are the determinant of previous matrices. This representation is not faithful and can be generalized. In fact, it can be demonstrated that if $D:F\to GL_n$ is a representation of $G$, then $D:G\to \C, g\mapsto \text{det}(D(g))$ is a one dimensional representation of $G$.
+\item A three dimensional representation can be done by adding one row and one columns to the two dimensional representation, as follow
+\[C_3 \mapsto \begin{pmatrix}
+  \cos\left(\frac{2\pi}{3}\right) & \sin\left(\frac{2\pi}{3}\right) & 0\\
+  -\sin\left(\frac{2\pi}{3}\right) & \cos\left(\frac{2\pi}{3}\right) & 0\\
+  0 & 0 &1 
+ \end{pmatrix} \qquad \sigma^1 =  \begin{pmatrix}
+ -1& 0 & 0\\
+0 & 1 & 0\\
+0 &0 &1
+ \end{pmatrix}.\]
+This can be also done for higher dimensional representation, but they are not very interesting. However, there are representation called irreducible with which every representation can be constructed.
+\end{itemize}
 \end{document}
