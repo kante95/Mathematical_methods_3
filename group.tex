@@ -76,7 +76,7 @@ bottom=3cm, bindingoffset=1cm,headheight=110pt]{geometry}
 \begin{document}
 \maketitle
 \tableofcontents
-\chapter{Group theory and representation theory}
+\chapter{Group theory and representation of groups}
 \section{Fundamentals of groups}
 Group theory is a branch of mathematics that study \emph{Groups}, groups are useful, for instance, to describe symmetries in a system. In physics, symmetries have a central role, a problem can be simplified in presence of symmetries and some physical quantities are directly correlated to symmetries. Therefore, the study of group is indeed important in theoretical physics.
 Let us start from the beginning by defining what is a group
@@ -294,6 +294,87 @@ The number are not chosen randomly, but they are the determinant of previous mat
 0 & 1 & 0\\
 0 &0 &1
  \end{pmatrix}.\]
-This can be also done for higher dimensional representation, but they are not very interesting. However, there are representation called irreducible with which every representation can be constructed.
+This can be also done for higher dimensional representation, but they are not very interesting. However, there are representation called irreducible with which every representation can be constructed, as we will see later.
+\item There is a more interesting three dimensional representation of $S_3$. First let us recall that the action of a group with representation $D_3:S_3\to GL(\C^3)$ can be written using the standard basis $\{\mathbf{e_i}\}$ of $\C^3$, in fact $D_3(g)\mathbf{e_i} =\mathbf{e_g}$
+\[D_3(g_1) = \begin{pmatrix}
+  0 & 1 & 0\\
+  1 & 0 & 0\\
+  0 & 0 & 1 
+ \end{pmatrix} \quad D_3(g_2) = \begin{pmatrix}
+  0 & 0 & 1\\
+  0 & 1 & 0\\
+  1 & 0 &0 
+ \end{pmatrix}\quad D_3(g_3) = \begin{pmatrix}
+  1 & 0 & 0\\
+  0 & 0 & 1\\
+  0 & 1 &0 
+ \end{pmatrix}\]
+ \[D_3(g_4) = \begin{pmatrix}
+  0 & 0 & 1\\
+  1 & 0 & 0\\
+  0 & 1 &0 
+ \end{pmatrix}\quad D_3(g_5) = \begin{pmatrix}
+  0 & 1 & 0\\
+  0 & 0 & 1\\
+  1 & 0 &0 
+ \end{pmatrix},\]
+ and the identity matrix which is the neutral element. In order to show that this is indeed a representation, it has to fulfil $D_3(g_ig_j) = D_3(g_i)D_3(g_j)$, i.e. the representation is a GO. This can be done easily with the Dirac notation $D(g_ig_j) = \sum_i \ket{e_{g_i}}\bra{e_{g_i}}$. This last example is called regular representation, which we are going to focus on in the next section.
 \end{itemize}
+\subsection{Regular representations}
+A regular representation is defined for any finite group, and if $|G|=n$, then the representation $R(p)\in M_{n,n}(\R)$. Moreover, the regular representation contains in a sense all the representation.
+\begin{dfn}
+Let $G$ be a group, then a \textbf{regular representation} $R:G\to GL_n(\R)$ is defined as follow
+\[R(g_i)_{kj} = \begin{cases}
+1\qquad \text{if}\,\,\, g_kg_j^{-1} = g_i\\
+0 \qquad \text{else}
+\end{cases}\]
+\end{dfn}
+\InsertBoxR{0}{
+  \begin{minipage}{5.5cm}
+\begin{tabular}{c|cccc}
+G & $g_1$ & $g_2$ &  & $g_n$\\
+\midrule
+$g_1^{-1}$ &$e$ & $g_1^{-1}g_2$ &\dots& $g_1^{-1}g_n$\\  [0.05cm]
+$g_2^{-1}$ &$g_2^{-1}g_1$ & $e$ & & $g_2^{-1}g_n$\\ [0.05cm]
+$\vdots$ & & & $\ddots$\\[0.05cm]
+$g_n^{-1}$ &$g_n^{-1}g_1$ & $g_n^{-1}g_2$ & & $e$\\ [0.05cm]
+\end{tabular}
+\end{minipage}}[3]This definition can be better understood by considering the group table. Since the order of the elements is not relevant, we can sort the table such that, on the diagonal, there is only the neutral element. $R(g_i)$ is then defined as the $n\times n$ matrix that we obtain from the table by replacing $g_i$ with one, and $g_j\neq g_i$ with zeros on each row.
+It is possible to prove that $R$ is a representation, this is left as an exercise for the reader.
+\begin{dfn}
+Let $D:G\to GL(V)$ be a representation, then $D$ is called \textbf{unitary} if
+\[D(g)^\dagger = D(g)^{-1} = D(g^{-1})\quad \forall g \in G\]
+\end{dfn}
+Let us consider two representation $D_1,D_2$ of $G$, then $D_1\oplus D_2:G \to GL(V_1\oplus V_2),g\mapsto D_1(g)\oplus D_2(g)$ is a representation. Therefore, it is possible to build representation. This also means that there exist infinitely many representation, as we are going to see, for finite groups only very few representations are necessary to construct all of them. Notice that if $D_1\oplus D_2$ is a representation, also $S(D_1\oplus D_2)S^{-1}$ is a representation for any $S\in GL(\text{dim}(V_1)+\text{dim}(V_2))$. 
+\subsection{Irreducible representations}
+We have already remarked that a representation can be build with others. However, there are some representations that constitute the basic block for building other representations, and cannot be obtained from other representation. This representations are called irreducible representations. Before jumping in their definition, we need to discuss a particular class of spaces.
+\begin{dfn}
+Let $(D,V)$ be a representation, then a subspace $W\subseteq V$ is called \textbf{invariant subspace} if
+\begin{enumerate}[i.]
+	\item $D(g)W\subseteq W, \forall g\in G$, i.e. $D(g)w\in W$ for $w\in W$.
+	\item $W\neq \{0\}$ and $W\neq V$.
+\end{enumerate}
+\end{dfn}
+\begin{dfn}
+A representation $(D,V)$ is called \textbf{irreducible} if there exist no non-trivial invariant subspace, i.e. there exist no invariant subspace $W$ with $W\neq\{0\}$ and $W\neq V$. Otherwise $(D,V)$ is called \textbf{reducible}.
+\end{dfn}
+Invariant subspaces are important because we can actually work inside them, in fact, let $W$ be an invariant subspace of a representation $(D,V)$, then $D$ restricted to $W$ is a representation
+\[D\big|_W:G\to GL(W)\qquad g\mapsto D\big|_W(g).\]
+\begin{dfn}
+A representation $(D,V)$ is called \textbf{completely reducible} id there exist invariant subspaces $V_i\subseteq V$ such that $V_1\oplus V_2\oplus\dots\oplus V_n = V$. If  $(D\big|_{V_i},V_i)$ are irreducible, then $V_1\oplus V_2\oplus\dots\oplus V_n = V$ is called \textbf{decomposition} into irreducible representations. Furthermore, we can write our representation as
+\[D = \bigoplus_{i}D\big|_{V_i}\]
+\end{dfn}
+Notice that not any representation is completely reducible, for instance let us consider the following representation
+\[D(\R,+)\to GL_2\quad x\mapsto \begin{pmatrix}
+  1 & x\\
+  0 & 1 
+ \end{pmatrix} \]
+If we apply our matrix on the vector $(1,0)^{T}$ we obtain $(1,0)^{T}$. Therefore, this vector is invariant, but there exist no $v$ such that $D(x)v$ is proportional to $v$, that is the matrix is not diagonalizable, thus we cannot write $\R$ as a direct sum of two invariant subspaces. Hence $D$ is not completely reducible.\\
+Nevertheless, for this example we considered a non finite group, but we will see that for a finite group, any representation is completely reducible. 
+\begin{lem}
+A representation $(D,V)$ is completely reducible if and only if for any invariant subspace $W$, there exist an invariant subspace $W'$ such that $W\oplus W' = V$
+\end{lem}
+\hspace{-1.4em}\textbf{Proof:}\\
+$(D,V)$ is completely reducible $\implies V= V_1\oplus V_2\oplus \dots V_n$, where $V_i$ are invariant subspaces and does not contain any non-trivial invariant subspace. If $W$ is an invariant subspace, then $W\cap V_i$ is either $\{0\}$ or $V_i$ this implies that $W = \bigoplus_{i\in I} V_i$ for some indexes $I$, thus $W^\perp = \bigoplus_{i\notin I} V_i \implies W^\perp$ is invariant. \hfill\ensuremath{\square}\\
+A relevant case for physics is when $V$ is a Hilbert space, and therefore there exists a scalar product.\\
 \end{document}
