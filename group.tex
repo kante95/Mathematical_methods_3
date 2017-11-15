@@ -17,6 +17,7 @@
 \usepackage{bbm}
 \usepackage{fancyhdr}
 \usepackage{emptypage}
+\usepackage{braket}
 
 \usepackage{wrapfig,lipsum,booktabs}
 \input{insbox.tex}
@@ -361,7 +362,7 @@ A representation $(D,V)$ is called \textbf{irreducible} if there exist no non-tr
 Invariant subspaces are important because we can actually work inside them, in fact, let $W$ be an invariant subspace of a representation $(D,V)$, then $D$ restricted to $W$ is a representation
 \[D\big|_W:G\to GL(W)\qquad g\mapsto D\big|_W(g).\]
 \begin{dfn}
-A representation $(D,V)$ is called \textbf{completely reducible} id there exist invariant subspaces $V_i\subseteq V$ such that $V_1\oplus V_2\oplus\dots\oplus V_n = V$. If  $(D\big|_{V_i},V_i)$ are irreducible, then $V_1\oplus V_2\oplus\dots\oplus V_n = V$ is called \textbf{decomposition} into irreducible representations. Furthermore, we can write our representation as
+A representation $(D,V)$ is called \textbf{completely reducible} if there exist invariant subspaces $V_i\subseteq V$ such that $V_1\oplus V_2\oplus\dots\oplus V_n = V$. If  $(D\big|_{V_i},V_i)$ are irreducible, then $V_1\oplus V_2\oplus\dots\oplus V_n = V$ is called \textbf{decomposition} into irreducible representations. Furthermore, we can write our representation as
 \[D = \bigoplus_{i}D\big|_{V_i}\]
 \end{dfn}
 Notice that not any representation is completely reducible, for instance let us consider the following representation
@@ -370,11 +371,25 @@ Notice that not any representation is completely reducible, for instance let us 
   0 & 1 
  \end{pmatrix} \]
 If we apply our matrix on the vector $(1,0)^{T}$ we obtain $(1,0)^{T}$. Therefore, this vector is invariant, but there exist no $v$ such that $D(x)v$ is proportional to $v$, that is the matrix is not diagonalizable, thus we cannot write $\R$ as a direct sum of two invariant subspaces. Hence $D$ is not completely reducible.\\
-Nevertheless, for this example we considered a non finite group, but we will see that for a finite group, any representation is completely reducible. 
+Nevertheless, for this example we considered a non finite group, but we will see that for a finite group, any representation is completely reducible. \\
+A relevant case for physics is when $V$ is a Hilbert space, and therefore there exists a scalar product on such space, therefore the orthogonal complement $W^\perp$ is well defined and can be used.
 \begin{lem}
 A representation $(D,V)$ is completely reducible if and only if for any invariant subspace $W$, there exist an invariant subspace $W'$ such that $W\oplus W' = V$
 \end{lem}
 \hspace{-1.4em}\textbf{Proof:}\\
-$(D,V)$ is completely reducible $\implies V= V_1\oplus V_2\oplus \dots V_n$, where $V_i$ are invariant subspaces and does not contain any non-trivial invariant subspace. If $W$ is an invariant subspace, then $W\cap V_i$ is either $\{0\}$ or $V_i$ this implies that $W = \bigoplus_{i\in I} V_i$ for some indexes $I$, thus $W^\perp = \bigoplus_{i\notin I} V_i \implies W^\perp$ is invariant. \hfill\ensuremath{\square}\\
-A relevant case for physics is when $V$ is a Hilbert space, and therefore there exists a scalar product.\\
+$\implies$) $(D,V)$ is completely reducible $\implies V= V_1\oplus V_2\oplus \dots V_n$, where $V_i$ are invariant subspaces and does not contain any non-trivial invariant subspace. If $W$ is an invariant subspace, then $W\cap V_i$ is either $\{0\}$ or $V_i$ this implies that $W = \bigoplus_{i\in I} V_i$ for some indexes $I$, thus $W^\perp = \bigoplus_{i\notin I} V_i \implies W^\perp$ is invariant.\\
+$\impliedby$) The proof is by induction on the dimension of $V$. If $\text{dim}(V) = 1$, the statement is obvious $V= V_1$.Now let us assume that it is true for $\text{dim}(V) = d$, and we prove that it is true for $\text{dim}(V) = d+1$. $V$ is either irreducible or exists an invariant subspace $W\subset V$ with $1\leq \text{dim}(W)\leq d$. Per assumption $\exists W' : V = W\oplus W'$ and $W'$ is irreducible and also $\text{dim}(W') \leq d$ which implies that $W,W'$ are completely irreducible, i.e. $V$ is completely reducible. \hfill\ensuremath{\square}\\
+As example let us study the symmetric group $S_3$, recall the three dimensional representation $D_3(g)$ which can be written as $D_3(g)e_i = e_{g_i}$. Our goal is to find an invariant subspace $W\subset \R^3$ such that $D_g W = W$ $\forall g\in G$. For instance
+\[W_1 = \text{span}\left\{\begin{pmatrix}1\\1\\1\end{pmatrix}\right\}\]
+is an invariant subspace with dimension one, in fact applying a permutation to this space does not change it. Another is 
+\[W_2 = \left\{\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}:\sum_i x_i = 0\right\}.\]
+This is a two dimensional subspace. The point now is: can we reduce further this space? If the answer is no we decomposed $D_3$, otherwise we can further decompose it. The answer is no, there is not, and we can show it. Consider an hypothetical invariant subspace $\overline{W}$ of $W$ that is non trivial. The dimension of $\overline{W}$ must be one and $D_g\overline{W}\propto \overline{W}$, for instance we we take the permutation $2\to1$
+\[D_g \begin{pmatrix}w_1\\w_2\\w_3\end{pmatrix} \propto \begin{pmatrix}w_2\\w_1\\w_3\end{pmatrix}\quad \forall g\in G.\]
+This must holds for every permutation. Therefore, $\omega_1 \propto \omega_2\propto \omega_3$ and $\sum_i \omega_i = 0$. The only solution for $\omega_i$ is $\omega_i =0$ that is a trivial space. In conclusion, $W_1$ e $W_2$ are the only invariant subspaces which implies that $D_3$ is completely reducible with $V = W_1 \oplus W_2$ and more important $D = D\big|_{W_1} \oplus D\big|_{W_2}$. We will return on this example in the next section.
+\section{Finite groups}
+\begin{thm}
+Any irreducible representation of a finite group is finite dimension.
+\end{thm}
+\hspace{-1.4em}\textbf{Proof:}\\
+The proof can be done by contradiction. Suppose that $V$ is infinite dimensional and irreducible, then we can define the space $W_a = \{D_g \ket{a}:g\in G,a\in V\}$. $W_a$ is finite because $G$ is finite and it is invariant which is a contradiction of the assumption.\hfill\ensuremath{\square}\\
 \end{document}
