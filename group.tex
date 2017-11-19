@@ -373,7 +373,7 @@ Notice that not any representation is completely reducible, for instance let us 
 If we apply our matrix on the vector $(1,0)^{T}$ we obtain $(1,0)^{T}$. Therefore, this vector is invariant, but there exist no $v$ such that $D(x)v$ is proportional to $v$, that is the matrix is not diagonalizable, thus we cannot write $\R$ as a direct sum of two invariant subspaces. Hence $D$ is not completely reducible.\\
 Nevertheless, for this example we considered a non finite group, but we will see that for a finite group, any representation is completely reducible. \\
 A relevant case for physics is when $V$ is a Hilbert space, and therefore there exists a scalar product on such space, therefore the orthogonal complement $W^\perp$ is well defined and can be used.
-\begin{lem}
+\begin{lem}\label{lemmautile}
 A representation $(D,V)$ is completely reducible if and only if for any invariant subspace $W$, there exist an invariant subspace $W'$ such that $W\oplus W' = V$
 \end{lem}
 \hspace{-1.4em}\textbf{Proof:}\\
@@ -391,5 +391,47 @@ This must holds for every permutation. Therefore, $\omega_1 \propto \omega_2\pro
 Any irreducible representation of a finite group is finite dimension.
 \end{thm}
 \hspace{-1.4em}\textbf{Proof:}\\
-The proof can be done by contradiction. Suppose that $V$ is infinite dimensional and irreducible, then we can define the space $W_a = \{D_g \ket{a}:g\in G,a\in V\}$. $W_a$ is finite because $G$ is finite and it is invariant which is a contradiction of the assumption.\hfill\ensuremath{\square}\\
-\end{document}
+The proof can be done by contradiction. Suppose that $V$ is infinite dimensional and irreducible, then we can define the space $W_a = \{D_g \ket{a}:g\in G,a\in V\}$. $W_a$ is finite because $G$ is finite and it is invariant which is a contradiction of the assumption.\hfill\ensuremath{\square}
+\begin{thm}
+Any representation of finite group is equivalent to a unitary representation, i.e.
+\[\forall (D,V),\forall g\in G \,\,\, \exists S:SDS^{-1} = \widetilde{D}_g \,\,\,\text{and}\,\,\, \widetilde{D}_g^{-1} = \widetilde{D}_g^\dagger  \]
+\end{thm}
+\hspace{-1.4em}\textbf{Proof:}\\
+Let $D$ be a representation of $G$, we define the positive\footnote{in fact $\braket{\psi|D^\dagger_gD_g|\psi}=\|\psi\|^2$, and sum of positive terms is always positive.} operator $T = \displaystyle\sum_{g\in G}D^\dagger_gD_g$. Then we show the following
+\begin{equation}\label{questarobaqui}
+D_h^\dagger T D_h = D_h^\dagger \sum_{g\in G} D_g^\dagger D_g D_h = \sum_{g\in G} D_h^\dagger D_g^\dagger D_gD_h = \sum_{g\in G} D_g^\dagger D_g  \equiv T,
+\end{equation}
+whereas in the last step we used the fact that $D_gD_h = D_{gh}$, and we have already showed that $gh$ is just a permutation of the elements, therefore the sum over every term $D_{gh}$ is equivalent as the sum $D_g$ for the commutativity of the sum. Obviously, equation \eqref{questarobaqui} holds for every $h\in G$. Now we define $S =T^{\frac{1}{2}}$, which is well defined because $T$ is positive\footnote{$T= T^\dagger\implies \exists u,d:T=udu^\dagger$, where $d$ is diagonal. That is $T^{1/2}=U\sqrt{D}U^\dagger$}, and we rewrite equation \eqref{questarobaqui}
+as $D_h^\dagger S^2 D_h = S^2$, which can be rewritten as $D_h^\dagger S = S^2 D_h^{-1}S^{-1}$. Multiplying this by $S^{-1}$ leads to $S^{-1}D_h^\dagger S = SD_h^{-1}S^{-1}$ and finally taking the inverse $(S^{-1}D_h^\dagger S)^{-1} = S^{-1}D_hS$, in the right hand side we can write instead of $S$, $S^\dagger$, since they are the same and we obtain the final result
+$(S^{-1}D_h^\dagger S)^{-1} = (S^{-1}D_h^\dagger S)^\dagger$ \hfill(?:/)\ensuremath{\square}
+\begin{thm}
+Any unitary representation of a finite group is completely reducible
+\end{thm}
+\hspace{-1.4em}\textbf{Proof:}\\
+Let $W$ be invariant, and let $a\in W^\perp,b\in W,p\in G$, then $\braket{a|D_g|b} = \braket{D_g^\dagger a|b} = \braket{D_{g^{-1}}a|b}\implies D_g W^\dagger \subseteq W^\dagger$. 
+According to lemma \ref{lemmautile} a representation $(D,V)$ is completely reducible if and only if for all invariant subspace $W$ also $W^\perp$ is invariant. \hfill(?:/)\ensuremath{\square}\\
+In summary, we showed the following propositions
+\begin{enumerate}
+	\item Any representation of finite group is finite
+	\item Any representation of finite group is equivalent to an unitary group
+	\item Any unitary representation is completely reducible
+\end{enumerate}
+as corollary of these we have the most important result
+\begin{center}\fbox{\begin{minipage}{\dimexpr.5\textwidth-2\fboxsep-2\fboxrule\relax}
+\centering
+Any representation of finite group \\is completely reducible
+\end{minipage}}
+\end{center}
+That is, if $G$ is finite, let us consider $D:G\to GL(V)$, then 
+\[\exists S\in GL(V): D_g = S\begin{pmatrix}D_1(g)\\&D_2(g)\\&&\ddots\end{pmatrix}S^{-1},\]
+where $D_i$ are irreducible representations.\\
+Let us continue with the usual example of the representation of $S_3$. We have already showed how it can be decomposed into two invariant space $W_1$ and $W_2$, now let us try to find the representations restricted to those spaces. This can be done projecting the operator into the subspace
+\[D_3(g)\big|_{W_1} = P_{W_1}D_3(g)P_{W_1} = \ket{w_1}\bra{w_1}D_3(G)\ket{w_1}\bra{w_1} = \ket{w_1}\bra{w_1}\quad \forall g\in G.\]
+In fact a permutation over a state with the same components does not change anything. Hence $D_3(g)\big|_{W_1}$ is the trivial representation $D_3(g)\big|_{W_1}:G\to 1$. More interesting is of course the space $W_2$, consider a base of this space, for instance
+\[v_1 = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\-1\end{pmatrix}\qquad v_2 = \frac{1}{\sqrt{6}}\begin{pmatrix}-1\\2\\-1\end{pmatrix}.\]
+Then the projector is $P_{W_2} = \ket{v_1}\bra{v_1} + \ket{v_2}\bra{v_2}$, hence
+\[D_3(g)\big|_{W_2} = P_{W_2}D_3(g)P_{W_2} = \sum_{ij} \ket{v_i}\bra{v_i}D_3(g)\ket{v_j}\bra{v_j},\]
+which can be calculated by hand or every permutation. A faster way is to consider The decomposition of $D$ as
+\[D_s(g) = S \begin{pmatrix}D_3(g)\big|_{W_1}&0\\0& D_3(g)\big|_{W_2} \end{pmatrix}S^{-1} =S \begin{pmatrix}1&0\\0& D_3(g)\big|_{W_2} \end{pmatrix}S^{-1}.\]
+$D_3(g)\big|_{W_2} $ must be a two dimensional representation of $S_3$ which we have already calculated in previous example.
+ \end{document}
