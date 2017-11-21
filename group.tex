@@ -248,7 +248,7 @@ Let $G,H$ be groups and $f:G\to H$ a GH, then we define the \textbf{kernel} of $
 Moreover, we define the \textbf{range} of $f$ as
 \[R(f) = \{f(a):a\in G\}\]
 \end{dfn}
-From this definitions it is easy to derive that the kernel is a subgroup of $G$, while the range is a subgroup of $H$. Indeed, if $g_1,g_2\in \text{Ker}(f)\implies f(g_1)=f(g_2)=e_H$, but due to the fact that $f$ is a GH, it is also true that $f(g_1g_2) = f(g_1)f(g_2)=e_H$. Therefore, $g_1g_2\in \text{Ker}(f)$. Furthermore, $e_G\in \text{Ker}(f)$, in fact $f(e_G) ) e_H$. And finally if $g\in \text{Ker}(f)\implies f(g^{-1}) = f(g)^{-1} = e_H^{-1} = e_H$, therefore $g^{-1}\in\text{Ker}(f)$. This prove the properties of a group and thus $\text{Ker}(f)\leq G$. Similarly can be demonstrated also that $R(f)\leq H$. Moreover, if $f$ is also injective, then $\text{Ker}(f) = \{e_G\}$ and if $f$ is subjective, then $R(f) = H$. \\
+From this definitions it is easy to derive that the kernel is a subgroup of $G$, while the range is a subgroup of $H$. Indeed, if $g_1,g_2\in \text{Ker}(f)\implies f(g_1)=f(g_2)=e_H$, but due to the fact that $f$ is a GH, it is also true that $f(g_1g_2) = f(g_1)f(g_2)=e_H$. Therefore, $g_1g_2\in \text{Ker}(f)$. Furthermore, $e_G\in \text{Ker}(f)$, in fact $f(e_G) ) e_H$. And finally if $g\in \text{Ker}(f)\implies f(g^{-1}) = f(g)^{-1} = e_H^{-1} = e_H$, therefore $g^{-1}\in\text{Ker}(f)$. This prove the properties of a group and thus $\text{Ker}(f)\leq G$. Similarly can be demonstrated also that $R(f)\leq H$. Moreover, if $f$ is also injective, then $\text{Ker}(f) = \{e_G\}$ and if $f$ is surjective, then $R(f) = H$. \\
 In the first section of this chapter we did some examples of groups, in particular we studied the symmetric group, Its central importance in group theory is due to the following theorem that connects finite group to symmetric group through an isomorphic map. Furthermore, groups can be represented by matrices via an homomorphic map, as we will see later.
 \begin{thm}
 (Theorem of Cayley for finite groups) Every finite group of order $n$ is isomorphic to a subgroup of the symmetric group $S_n$.
@@ -433,5 +433,101 @@ Then the projector is $P_{W_2} = \ket{v_1}\bra{v_1} + \ket{v_2}\bra{v_2}$, hence
 \[D_3(g)\big|_{W_2} = P_{W_2}D_3(g)P_{W_2} = \sum_{ij} \ket{v_i}\bra{v_i}D_3(g)\ket{v_j}\bra{v_j},\]
 which can be calculated by hand or every permutation. A faster way is to consider The decomposition of $D$ as
 \[D_s(g) = S \begin{pmatrix}D_3(g)\big|_{W_1}&0\\0& D_3(g)\big|_{W_2} \end{pmatrix}S^{-1} =S \begin{pmatrix}1&0\\0& D_3(g)\big|_{W_2} \end{pmatrix}S^{-1}.\]
-$D_3(g)\big|_{W_2} $ must be a two dimensional representation of $S_3$ which we have already calculated in previous example.
- \end{document}
+$D_3(g)\big|_{W_2} $ must be a two dimensional representation of $S_3$ which we have already calculated in previous example.\\
+Let us finish this section showing why it is possible to decompose a representation in a direct sum of restricted representations. For ease we will show the case of $S_3$, where the vector space is decomposed as $W =W_1\oplus W_2 = W_1 \oplus W_1^\perp$. Consider the projector $P_1 = \displaystyle\sum_i ^{\text{dim}(W_1)}\ket{v_i}\bra{v_i}$, where $\{v_i\}$ is a basis of $W_1$ and respectively $P_2 = \displaystyle\sum_i ^{\text{dim}(W_2)}\ket{v_i}\bra{v_i}$, where $\{v_i\}$ is a basis of $W_2$. From the completeness of the basis we can write $\I = P_1 + P_2$, thus we can also write $D(g) = \I D(g) \I$, substituting the identity operator with the sum of projectors yields to
+\begin{multline}
+D(g) = (P
+_1 + P_2)D(g)(P_1 + P_2) = (P_1D(g) + P_2D(g))(P_1 + P_2)\\ P_1D(g)P_1 +P_1D(g)P_2+P_2D(g)P_1+P_2D(g)P_2.
+\end{multline}
+In this expression all the mixed terms are zero, since $W_1$ and $W_2$ are invariant subspaces, hence $D(g)W_1 \subseteq W_1$ and the same for $W_2$, i.e. $D(g)P_1$ will be in $W_1$ for all $g$ in $G$. Therefore, if you project $W_1$ into $W_2$ you will obtain 0, since the space are orthogonal. In conclusion we get
+\[D(g) =P_1D(g)P_1 + P_2D(g)P_2,\]
+which is exactly the same as $D(g) = D(g)\big|_{W_1} \oplus  D(g)\big|_{W_2}$.
+\section{Schur's lemma}
+\begin{lem}(Schur's lemma)
+Let $(D_1,V_1)$ and $(D_2,V_2)$ be two representations of a finite group $G$, and let  $A$ be a linear operator between $V_1$ and $V_2$, $A\in \mathfrak{L}(V_1,V_2)$ such that
+\[AD_1(g) = D_1(g) A \qquad \forall g \in G,\]
+then $A$ is either an isomorphism, or $A=0$.
+\end{lem}
+\hspace{-1.4em}\textbf{Proof:}\\
+In order to prove this lemma, we are going to show that both $\text{Ker}(A)$ and $R(A)$ are invariant subspaces. In fact, if $\text{Ker}(A)$ is an invariant subspace under $D_1$, then, since $D_1(g)$ is irreducible,
+\[\text{Ker}(A) = \begin{cases} \{0\} \qquad \text{or}\\
+D_1\end{cases}. \]
+The same holds for the range, if $R(A)$ is an invariant subspace under $D_2$, then 
+\[R(A) = \begin{cases} \{0\} \qquad \text{or}\\
+D_2\end{cases}. \]
+Let us take a look at the case $\text{Ker}(A) = D_1$ and $R(A) = 0$, this means that every element of $D_1$ is mapped to 0, therefore $A=0$. In the other case $\text{Ker}(A) = \{0\}$ means that $A$ is injective and $R(A) = D_2$ means that $A$ is surjective, hence $A$ is bijective, so it is a isomorphism.\\
+Therefore, in order to prove the lemma we must prove the $\text{Ker}(A)$ and $R(A)$ are invariant subspace.
+\begin{itemize}
+	\item $\text{Ker}(A)$ is an invariant subspace of $V_1$:
+	\[D_1(g)\text{Ker}(A) = \text{Ker}(A) \qquad \forall g\in G,\]
+	let $\ket{a}\in \text{Ker}(A)$, then $AD_1(g) \ket{a} = D_1(g)A\ket{a} = 0$, which means that $D_1(g) \ket{a}\in\text{Ker}(A)$ for all $g$ and for all $a$. Hence $D_1(g)\text{Ker}(A) \subseteq \text{Ker}(A)$ 
+	\item $R(A)$ is an invariant subspace of $V_2$:\\
+	let $\ket{b}\in R(A)$, then it exists $\ket{x}$ such that $\ket{b} = A\ket{x}$, therefore we can write
+	\[AD_1(g) \ket{x} = D_1(g)A\ket{x} \qquad \forall g\in G,\forall b\in R,\]
+	but we can notice that $AD_1(g) \ket{x}\in R(A)$, and also $A\ket{x}\in R(A)$, thus $D_1(g)R(A) \subseteq R(A)$.
+\end{itemize}\hfill\ensuremath{\square}\\
+This lemma has a particular case, i.e. when $V_1=V_2$, which is particularly interesting for physics. In fact it can be used to diagonalize operator on Hilbert space very easily, as we will see in an example later. 
+\begin{lem}\label{lemmafigo}
+Let $D:G\to GL(V)$ be an irreducible representation of $G$, and $A\in \mathfrak{L}(V)$, such that
+\[AD(g) = D(g)A \qquad \forall g \in G,\]
+then $A=\lambda \I$, with $\lambda \in \C$.
+\end{lem}
+The proof of this lemma is so straightforward that any reader can do it by exercise. It is also possible to find $\lambda$ very easily, consider the trace of the operator 
+\[\text{Tr}(A) = \lambda \text{Tr}(\I)\implies \lambda = \frac{\text{Tr}(A)}{\text{dim}(V)}\],
+where we used the fact that $\text{Tr}(\I) = \text{dim}(V)$.
+\begin{thm}
+Any irreducible finite dimension representation of an abelian group is one dimensional.
+\end{thm}
+The proof is left as an exercise.
+\section{Applications}
+In quantum mechanics, it is common to diagonalize a certain operator in order to obtain the possible outcomes of a measurement. Moreover, it is also useful to diagonalize an operator, especially the Hamiltonian, since the evolution of a state is dictated by the evolution operator $U(t) = e^{-iHt}$. Group theory, in particular representation, and all the theory we developed so far can help to perform this diagonalization. Let us make the hypothesis that there is a symmetry on the system which commute with the Hamiltonian, i.e. $H D(g) = D(g)H$, then if $D(g)$ is irreducible, we can express our Hamiltonian as $H = \lambda\I$ for the lemmas of the previous section. This is not very interesting, but if $D(g)$ is reducible, we can write it as $S \oplus_i D_i(g)S^{-1}$, where $D_i(g)$ are now irreducible and can be written as $D_i(g) = \lambda_i \I$. This will give us the eigenvalues of the Hamiltonian. For instance we can consider the following matrix
+\[A = \begin{pmatrix}
+a&b&b\\b&a&b\\b&b&a
+\end{pmatrix}\qquad a,b\in \C.\]
+It is easy to check that $AD_3(g) = D_3(g)A$.We have already seen the decomposition of $D_3$ $D_3 = S(D_1\oplus D_2)S^{-1}$, we can use this relation in the previous and we found
+\[AS(D_1\oplus D_2)S^{-1} = S(D_1\oplus D_2)S^{-1}A,\]
+we can multiply this expression for $S$ on the right and $S^{-1}$ on the left, so we obtain
+\begin{equation}\label{comm}S^{-1}AS(D_1\oplus D_2) = (D_1\oplus D_2)S^{-1}AS.\end{equation}
+$S^{-1}AS$ is not know, but we can express it as a matrix with unknown coefficients
+\[B = S^{-1}AS = \begin{pmatrix}
+B_{11}&B_{12}\\
+B_{21}&B_{22}
+\end{pmatrix}\qquad B_{11}\in\C,B_{22}\in M_{2,2},B_{1,2}\in M_{1,2},B_{2,1}\in M_{2,1}.\]
+Notice that $B$ commute with $D_3(g)$ as shown in equation \eqref{comm}. Now, we can calculate the matrix multiplication between $B$ and $D_3$ of equation \eqref{comm}:
+\[\begin{pmatrix}
+B_{11}&B_{12}\\
+B_{21}&B_{22}
+\end{pmatrix} \begin{pmatrix}
+D_1&0\\
+0&D_2
+\end{pmatrix} = \begin{pmatrix}
+D_1&0\\
+0&D_2
+\end{pmatrix} \begin{pmatrix}
+B_{11}&B_{12}\\
+B_{21}&B_{22}
+\end{pmatrix},\]
+we end up with
+\[\begin{pmatrix}
+B_{11}D_1&B_{12}D_2\\
+B_{21}D_1&B_{22}D_2
+\end{pmatrix} = \begin{pmatrix}
+D_1B_{11}&D_1B_{12}\\
+D_2B_{21}&D_2B_{22}.
+\end{pmatrix}\]
+The equality for every term of the matrix is
+\[\begin{cases}
+B_{11}D_1 = D_1 B_{11} \implies B_{11} = \lambda_1 \I \\
+B_{12}D_2 = D_2 B_{12} \implies B_{12} = 0\\
+B_{21}D_1 = D_1 B_{21} \implies B_{21} = 0\\
+B_{22}D_2 = D_2 B_{22} \implies B_{22} = \lambda_2 \I 
+\end{cases}\]
+where we used lemma \ref{lemmafigo}. In conclusion we found that
+\[B = S^{-1}AS = \begin{pmatrix}
+\lambda_1 &0\\
+0&\lambda_2\I
+\end{pmatrix},\]
+which is the matrix $A$ diagonalized.
+\section{Orthogonality relations}
+
+\end{document}
