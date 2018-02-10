@@ -58,9 +58,9 @@
 \newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}} 
 % for double partial derivatives
 
-\title{\textbf{Group theory and matrix analysis}}
+\title{\textbf{An introduction to Group theory}}
 \author{Marco Canteri}
-\date{2017}
+\date{Winter semester 2017/2018}
 
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist
@@ -76,6 +76,9 @@ bottom=3cm, bindingoffset=1cm,headheight=110pt]{geometry}
 \fancyfoot[C]{\thepage}
 \begin{document}
 \maketitle
+These notes contain a part of the lessons of the course ``Mathematical Methods of Physics 3'' held by Professor Barbara Kraus in the winter semester 2017/2018 at the university of Innsbruck. The numbering of theorems and sections is different from class, due to a little reorganization of contents and sections, however I tried to keep the notation as close as possible to the one used in class. Unavoidably there are errors and I am not responsible for those, hence I recommend a critical and careful reading. Any comments or suggestions are welcome and appreciated.\\ \\
+Draft of first edition: 10/02/2018 \hfill Marco Canteri \\
+Innsbruck\hfill \textit{marco.canteri@student.uibk.ac.at}\\
 \tableofcontents
 \chapter{Group theory and representation of groups}
 \section{Fundamentals of groups}
@@ -297,7 +300,7 @@ The number are not chosen randomly, but they are the determinant of previous mat
  \end{pmatrix}.\]
 This can be also done for higher dimensional representation, but they are not very interesting. However, there are representation called irreducible with which every representation can be constructed, as we will see later.
 \item There is a more interesting three dimensional representation of $S_3$. First let us recall that the action of a group with representation $D_3:S_3\to GL(\C^3)$ can be written using the standard basis $\{\mathbf{e_i}\}$ of $\C^3$, in fact $D_3(g)\mathbf{e_i} =\mathbf{e_g}$
-\[D_3(g_1) = \begin{pmatrix}
+\begin{multline}\label{regularrepresentationD3}D_3(g_1) = \begin{pmatrix}
   0 & 1 & 0\\
   1 & 0 & 0\\
   0 & 0 & 1 
@@ -309,8 +312,8 @@ This can be also done for higher dimensional representation, but they are not ve
   1 & 0 & 0\\
   0 & 0 & 1\\
   0 & 1 &0 
- \end{pmatrix}\]
- \[D_3(g_4) = \begin{pmatrix}
+ \end{pmatrix}\\
+ D_3(g_4) = \begin{pmatrix}
   0 & 0 & 1\\
   1 & 0 & 0\\
   0 & 1 &0 
@@ -318,10 +321,10 @@ This can be also done for higher dimensional representation, but they are not ve
   0 & 1 & 0\\
   0 & 0 & 1\\
   1 & 0 &0 
- \end{pmatrix},\]
+ \end{pmatrix},\qquad\qquad\qquad\end{multline}
  and the identity matrix which is the neutral element. In order to show that this is indeed a representation, it has to fulfil $D_3(g_ig_j) = D_3(g_i)D_3(g_j)$, i.e. the representation is a GO. This can be done easily with the Dirac notation $D(g_ig_j) = \sum_i \ket{e_{g_i}}\bra{e_{g_i}}$. This last example is called regular representation, which we are going to focus on in the next section.
 \end{itemize}
-\subsection{Regular representations}
+\subsection{Regular representations}\label{section:regularrepresentation}
 A regular representation is defined for any finite group, and if $|G|=n$, then the representation $R(p)\in M_{n,n}(\R)$. Moreover, the regular representation contains in a sense all the representation.
 \begin{dfn}
 Let $G$ be a group, then a \textbf{regular representation} $R:G\to GL_n(\R)$ is defined as follow
@@ -392,7 +395,7 @@ Any irreducible representation of a finite group is finite dimension.
 \end{thm}
 \hspace{-1.4em}\textbf{Proof:}\\
 The proof can be done by contradiction. Suppose that $V$ is infinite dimensional and irreducible, then we can define the space $W_a = \{D_g \ket{a}:g\in G,a\in V\}$. $W_a$ is finite because $G$ is finite and it is invariant which is a contradiction of the assumption.\hfill\ensuremath{\square}
-\begin{thm}
+\begin{thm}\label{unitaryrepresentation}
 Any representation of finite group is equivalent to a unitary representation, i.e.
 \[\forall (D,V),\forall g\in G \,\,\, \exists S:SDS^{-1} = \widetilde{D}_g \,\,\,\text{and}\,\,\, \widetilde{D}_g^{-1} = \widetilde{D}_g^\dagger  \]
 \end{thm}
@@ -529,5 +532,121 @@ where we used lemma \ref{lemmafigo}. In conclusion we found that
 \end{pmatrix},\]
 which is the matrix $A$ diagonalized.
 \section{Orthogonality relations}
-
+Let $(D^\alpha,W^\alpha)$ and $(D^\beta,W^\beta)$ be two irreducible representation of $G$ and $X\in \mathfrak{L}(W^\alpha,W^\beta)$, we define the following operator 
+\[A =\sum_{g\in G} D_g^\alpha X D_{g^{-1}}^\beta,\]
+which has the following propriety
+\[D_h ^\alpha A = A D_h^\beta \quad \forall h\in G.\]
+This can be proved easily, in fact
+\[A D_h^\beta = \sum_{g\in G} D_g^\alpha X D_{g^{-1}}^\beta  D_h^\beta = \sum_{g\in G} D_g^\alpha X D_{g^{-1}h}^\beta,\]
+but since we are in a group $g^{-1}h\in G$, and since we are summing all over the elements we have that it is the same to write $g^{-1}h$ or $g$ in the sum. The same argument can be made for $D_h ^\alpha A$ and the equality is verified. Now if $D^\alpha = D^\beta$, we can use lemma \ref{lemmafigo} and therefore $A = \lambda \I$, or in the case that $D^\alpha$ and $D^\beta$ are inequivalent, for Schur's lemma $A=0$. We can write both of this cases as $A = \lambda \I \delta_{\alpha\beta}$ using the definition we gave of $A$ we can write
+\begin{equation}\label{cherobba}\sum_{g\in G} D_g^\alpha X D_{g^{-1}}^\beta = \lambda \I \delta_{\alpha\beta},\end{equation}
+taking the trace on both side of this equation leads to
+\begin{equation}\lambda \delta_{\alpha,\beta}\text{Tr}(\I) = \sum_{g\in G} \text{Tr}(D_g^\alpha X D_{g^{-1}}^\beta)\end{equation}
+for $\alpha =\beta$ we have 
+\[\lambda \text{Tr}(\I) = \sum_{g\in G} \text{Tr}(D_g X D_{g^{-1}})\]
+we can use the propriety of a trace such that we can move the factors inside the trace, and since $D_g D_{g^{-1}}=\I$, we obtain
+\begin{equation}\label{lambdafromtrace}\lambda \text{Tr}(\I) = \sum_{g\in G} \text{Tr}(X) \implies \lambda = \frac{\text{Tr}(X)}{\text{dim}(W)}|G|.\end{equation}
+This equation holds for any $X$, so we can choose a basis in $W^\alpha$, consider $X$ in that basis, and then choose $X_{ij} = \delta_{ij}\delta_{jm}$. If we insert this expression in equation \eqref{cherobba} we obtain
+\[\lambda \I \delta_{\alpha,\beta} = \sum_{g\in G}\left(D_g^\alpha\right)_{il}\left(D_{g^{-1}}^\beta\right)_{mj} = \frac{|G|}{\text{dim}(W^{\alpha})} \delta_{\alpha\beta}\delta_{ij}\delta_{ml}.\]
+In the case where $D^\beta$ is a unitary representation the previous equation can be written as
+\[\sum_{g\in G}\left(D_g^\alpha\right)_{il}\left(D_{g}^\beta\right)_{mj}^\dagger = \frac{|G|}{\text{dim}(W^{\alpha})} \delta_{\alpha\beta}\delta_{ij}\delta_{ml}.\]
+These expressions depend on the basis, unless we consider the equation with the trace, this leads at the definition of character of representations, which aims to characterize how many irreducible representations exist and how they can be characterized.
+\begin{dfn}
+Let $D:G\to \text{GL}(V)$ be a representation of a group $G$, the character of this representation is defined as
+\[\chi:G \to \C \quad g\to \text{Tr}(D_g) = \chi(g) = \sum_i D_{ii}(g).\]
+If $D$ is irreducible, then $\chi$ is called simple character.
+\end{dfn}
+The character has the following proprieties
+\begin{itemize}
+\item $\chi(e) = \text{Dim}(V)$.
+\item $\forall g,h\in G$ $\chi(g,hg^{-1}) = \chi(h)$, which is elements within the same conjugacy class have the same character.
+\item $\forall g\in G, \chi(g^{-1}) = \chi(g)^*$, Proof: $\chi(g^{-1}) = \text{Tr}(D(g^{-1})) = \text{Tr}(SD(g^{-1})S^{-1}) = \text{Tr}(\widetilde{D}(g^{-1}))$, where $\widetilde{D}$ is a unitary representation from theorem \ref{unitaryrepresentation}. $\text{Tr}(\widetilde{D}(g^{-1})) = \text{Tr}(\widetilde{D}(g)^\dagger) = \chi(g)^*$
+\item $\chi_{D_1 \oplus D_2}(g) = \chi_{D_1}(g) + \chi_{D_2}(g)$
+\end{itemize}
+Another property of orthogonality can be found considering the previous orthogonality relations and with $i=l$, $j=m$, and summing over $i$ and $j$, we can obtain the following
+\begin{equation}\label{nonsonooriginale}\sum_{g\in G}\chi^\alpha (g) \chi^\beta(g^{-1}) = \sum_{g\in G} \chi^\alpha (g) \chi^\beta(g)^* = \delta{\alpha\beta}\frac{|G|}{\text{Dim}(W^\alpha)}\sum_{ij}\delta_{ij} = \delta_{\alpha\beta}|G|,\end{equation}
+where we used the fact that $\sum_{ij}\delta{ij} = \text{Dim}(W^\alpha)$. We can notice that the left hand side of the equations is equivalent to a scalar product, hence the character of inequivalent irreducible representations are orthogonal. Introducing the following notation
+\[\overrightarrow{\chi}  = \begin{pmatrix}\chi_D(g_1)\\ \vdots \\ \chi_D(g_n)\end{pmatrix},\]
+we can rewrite equation \eqref{nonsonooriginale} as
+\[\braket{\overrightarrow{\chi}^\alpha ,\overrightarrow{\chi}^\beta} = \delta_{\alpha\beta}|G|.\]
+Since $\overrightarrow{\chi}$ is a $G$-dimensional vector, we have that there can be at most $|G|$ inequivalent irreducible representation. The vector $\overrightarrow{\chi}$ can be reduced with the conjugacy classes, in fact as already stated, elements of a conjugacy class have the same characteristic. Therefore we define the following
+\[\overline{\chi}_D = \begin{pmatrix} \sqrt{C_1} \chi_D(g_1) \\ \vdots \\ \sqrt{C_r} \chi_D(g_r)
+\end{pmatrix},\]
+where $r$ is the number of different conjugacy classes, and $C_i$ is the number of elements of a conjugacy class. The orthogonality relation becomes
+\[\braket{\overrightarrow{\chi}^\alpha ,\overrightarrow{\chi}^\beta} = \braket{\overline{\chi}^\alpha,\overline{\chi}^\beta} = \delta_{\alpha\beta}|G|.\]
+Furthermore, $\overline{\chi}_D$ is a $r$-dimensional vector, thus there exist at most $r$ different conjugacy classes. 
+\begin{thm}
+The number of irreducible representations of a finite group coincides with the number of different conjugacy classes.
+\end{thm}
+\section{Analysis of representations}
+The idea of character introduced can be very useful in the study of representations, we already saw that any representation $D$ of a finite group is completely reducible, i.e. $D = \bigoplus_i D_i = m_1 D_1 + m_2D_m \dots = \sum_\alpha m_\alpha D^\alpha$, where $D_i$ are irreducible representations. Moreover we saw that $\chi^\alpha \perp \chi^\beta$ for $D^\alpha$ and $D^\beta$. From the proprieties of the character we have that $\chi_D =\sum_\alpha \chi^\alpha$ and the equivalent vector expression $\overrightarrow{\chi}_D =\sum_\alpha \overrightarrow{\chi}^\alpha$. If we take the scalar product with $\overrightarrow{\chi}^\beta$ and with the orthogonality relation, we obtain
+\[m_\beta = \frac{\braket{\overrightarrow{\chi}^\beta|\overrightarrow{\chi}_D}}{|G|}.\]
+This result can be used to prove a useful criterium\\
+\textbf{Criterion for characters of irreducible representation}\\Let $D$ be a representation of $G$, then $D$ is irreducible $\iff$ $\braket{\overrightarrow{\chi}_{D}|\overrightarrow{\chi}_{D}} = \sum_{g\in G}|\chi_D(g)|^2 = |G|$.\\ The proof is the following:\\
+$\implies)$ If $D$ is irreducible, then $D = m_1 D_1$ with $m_1= 1$, then $1 = \frac{\braket{\overrightarrow{\chi}_D|\overrightarrow{\chi}_D}}{|G|} \implies \braket{\overrightarrow{\chi}_D|\overrightarrow{\chi}_D} = |G|$\\
+$\impliedby)$ $\chi_D = \sum_\alpha m_\alpha\chi^\alpha \implies \braket{\chi_D|\chi_D} = \sum m_\alpha m_\beta \braket{\chi_\alpha|\chi_\beta}$, now we use the orthogonality relation $\braket{\chi_\alpha|\chi_\beta} = \delta_{\alpha\beta}|G|$ and we get $\sum m_\alpha m_\beta \braket{\chi_\alpha|\chi_\beta} = |G| \sum m_\alpha^2 = |G| \implies \sum m_\alpha^2 = 1$. Since $m\alpha\in \mathbb{N}, \exists! \alpha : m_\alpha = 1$, while $m_\beta = 0 $ for $\beta\neq \alpha$ which implies that $D$ is irreducible.\hfill\ensuremath{\square}\\
+For small groups this criterion can be very useful, for instance, consider $S_3$ and its three dimensional representation $D_3$ defined with equation \eqref{regularrepresentationD3}, we can easily check that $\chi_{D_3}(e) = 3$, while $\chi_{D_3}(g_1) = \chi_{D_3}(g_2) = \chi_{D_3}(g_3)=1$, and $\chi_{D_3}(g_4) = \chi_{D_3}(g_5) = 0$. With these values we can check whether $D_3$ is irreducible or not. If it is irreducible, then $\braket{\chi_{D_3}|\chi_{D_3}} = |G| = 6$, but summing the squares of all the characters calculated we get $\braket{\overrightarrow{\chi}_{D_3}|\overrightarrow{\chi}_{D_3}} = 12$, thus $D_3$ is not irreducible. With the criterion we can also draw some interesting conclusion, i.e. let us consider $D_3$ as sum of irreducible representations $D_3 = \bigoplus_\alpha m_\alpha D_\alpha$, then
+\[\braket{\overrightarrow{\chi}_{D_3}|\overrightarrow{\chi}_{D_3}} = \sum_\alpha m_\alpha^2 \braket{\overrightarrow{\chi_{D_i}}|\overrightarrow{\chi}_{D_i}} = |G|\sum_{\alpha}m_\alpha^2, \]
+that with the values $|G| = 6$ and $\braket{\overrightarrow{\chi}_{D_3}|\overrightarrow{\chi}_{D_3}}=12$ can be written as $12 = 6\sum_{\alpha}m_\alpha^2$, and since $m_\alpha$ are integers, the only solution is $m_1 = m_2 = 1, m_i = 0$ for $i\neq 1,2$. In conclusion the representation $D_3$ can be written as sum of two irreducible representations $D_3 = D_1 \oplus D_2$.\\
+We can also study the character of a regular representation $R$, that recalling section \ref{section:regularrepresentation} is defined as
+\[R(g_i)_{kj} = \begin{cases}
+1\qquad \text{if}\,\,\, g_kg_j^{-1} = g_i\\
+0 \qquad \text{else}
+\end{cases}.\]
+We want to prove that $R = \bigoplus_{i}m_i D_i$, where $m_i = \text{Dim}(D_i)$, and $D_i$ is a irreducible representation. The character of a regular representation can be easily calculated $\chi_R(g_i) = \text{Tr}(R(g_i)) = \delta_{i1}|G|$, where $g_1 = e$. We can express the regular representation as a sum: $\overrightarrow{\chi}_R = \sum_i m_i \overrightarrow{\chi}_i$, where $ \overrightarrow{\chi}_i$ is a simple character. We can also calculate the following scalar product 
+\[\braket{\overrightarrow{\chi}_R| \overrightarrow{\chi}_j} = \sum_i [\chi_R(g_i)]^* \chi_j(g_i) = |G| \chi_j(e) = |G|\text{dim}(D_j) \equiv |G| n_j,\]
+where we used the fact that $\chi_R(g_i) \delta_{i1}|G|$. Moreover if we use $\overrightarrow{\chi}_R = \sum_i m_i \overrightarrow{\chi}_i$ the same scalar product is
+\[\braket{\overrightarrow{\chi}_R| \overrightarrow{\chi}_j} = m_j \braket{\overrightarrow{\chi}_j|\overrightarrow{\chi}_j} =|G| m_j.\]
+From the last two equations we obtain the searched result $m_j = n_j \equiv \text{dim}(D_j)$. Therefore, the regular representation contains all irreducible representations of $G$ with multiplicity $n_i = \text{dim}(D_i)$. From the character of a regular representation we can also find the following useful relation
+\[\chi_R(g_i) = \sum_{j=1} n_j \chi_j(g_i) = \delta_{i1}|G| \implies |G| = \sum_{j=1} n_j^2\].
+Using this fact we can state that for instance
+\begin{itemize}
+\item if $|G|=2$, then the group has exactly two one-dimensional representations.
+\item if $|G| = 3$, then the group has exactly three one-dimensional representations.  
+\item if $|G| = 6$, then the group has either two one-dimensional representations and one two-dimensional, or six one-dimensional representations. 
+\end{itemize}
+\begin{thm}
+If a group $G$ has only one-dimensional representations, then $G$ is abelian.
+\end{thm}
+The theorem is not the case of $S_3$, since it has a two-dimensional representation.
+\section{Summary of finite groups and their representation}
+The important results of the previous sections can be summarized as follow.\\
+Consider a finite group $G =\{g_1,\dots,g_n\}$, since it is a group $g_ig_j = g_k$. A representation is a function $D:G\to GL(n)$ with the property $D(hg) = D(h)D(g)$. Moreover, we have the following result
+\begin{itemize}
+\item Any representation is equivalent to a unitary group $D(g)^\dagger = D(g^{-1}) = D(g)^{-1}$.
+\item Any unitary representation is completely reducible.
+\item Any representation is completely reducible, i.e. $D = \bigoplus D_i$, with $D_i$ irreducible representation. 
+\item There exist $r$ irreducible representation, where $r$ is the number of conjugacy classes.
+\item $D_i$ is irreducible $\iff$ $\braket{\chi_i|\chi_i} = |G|$
+\item $\overrightarrow{\chi}_D  =\sum_i m_i \overrightarrow{\chi}_i$, and $\overrightarrow{\chi}_R  =\sum_i n_i \overrightarrow{\chi}_i$, $D_R = \bigoplus_i n_i D^i$.
+\end{itemize}
+\section{Lie Group}
+A Lie group has a centrl role in physics, so in this chapter we will give a short introduction. We only treated finite group, but many of the obtained result cold be generalized to continuous group $G$, that is a group whose order is uncountably infinite. The elements of $G$ can be parametrized as $g(\mathbf{a}) = g(a_1,a_2,\dots,a_n)$, with $\mathbf{a}\in\R^n$. For the multiplication of two elements, we have that $g(\mathbf{a})g(\mathbf{b})=g(\mathbf{c})$, where $\mathbf{c} = f(\mathbf{a},\mathbf{b})$.
+\begin{dfn}
+Let $G = \{(a_1,a_2,\dots,a_n)\}$, be a continuous group, and $f$ be an analytic function, i.e. there exist a converging Taylor series for $f$, then $G$ is called an $n$-parameters \textbf{Lie Group}.
+\end{dfn}
+\begin{dfn}
+A Lie group is called compact if its parameter space is compact in $\R^n$.
+\end{dfn}
+Examples of Lie groups are
+\begin{itemize}
+	\item $U(1) = \{e^{i\alpha}\}$, with $\alpha\in[0,2\pi]$, which is a compact Lie group.
+	\item $GL_n$ is also a Lie group.
+	\item $SU(2) = \{e^{i\alpha\sigma_x}e^{i\beta\sigma_y}e^{i\alpha\sigma_x}\}$ is a three-parameters compact Lie group.
+	\item $SO(2) =\{A\in SL(2,\R): AA^\dagger = A^\dagger A = \I\}$, this is a one-parameter compact Lie group, which we can parametrize as $R(\phi) = \begin{pmatrix}
+	\cos(\phi) & \sin(\phi)\\
+	-\sin(\phi) & \cos(\phi)\\
+	\end{pmatrix}$
+\end{itemize}
+The idea of Lie was to consider infinitesimal transformations, any elements of the group can be decomposed into those infinitesimal transformations.\\
+We can also find the generator of the last example, we can expand in a Taylor series $R(\phi)$ around $\phi=0$
+\[R(\phi) = R(0) + \frac{dR}{d\phi}\Bigg|_{\phi=0} \phi + \frac{1}{2}\frac{d^2R}{d\phi^2}\Bigg|_{\phi=0} \phi^2 +\dots,\]
+the first derivative is easy to calculate 
+\[\frac{dR}{d\phi}\Bigg|_{\phi=0} = \begin{pmatrix}
+	0 & 1\\
+	-1 & 0\\
+	\end{pmatrix}  \equiv X ,\]
+and similarly the other derivatives, we find that
+\[R(\phi) = \I + X\phi + \frac{1}{2}X^2\phi^2+\dots = e^{\phi X} = e^{i\phi \sigma_y}.\]
+$X$ is called the generator of the group.
 \end{document}
