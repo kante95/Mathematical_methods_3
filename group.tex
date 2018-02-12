@@ -77,12 +77,12 @@ bottom=3cm, bindingoffset=1cm,headheight=110pt]{geometry}
 \begin{document}
 \maketitle
 These notes contain a part of the lessons of the course ``Mathematical Methods of Physics 3'' held by Professor Barbara Kraus in the winter semester 2017/2018 at the university of Innsbruck. The numbering of theorems and sections is different from class, due to a little reorganization of contents and sections, however I tried to keep the notation as close as possible to the one used in class. Unavoidably there are errors and I am not responsible for those, hence I recommend a critical and careful reading. Any comments or suggestions are welcome and appreciated.\\ \\
-Draft of first edition: 10/02/2018 \hfill Marco Canteri \\
+First edition: 10/02/2018 \hfill Marco Canteri \\
 Innsbruck\hfill \textit{marco.canteri@student.uibk.ac.at}\\
 \tableofcontents
 \chapter{Group theory and representation of groups}
 \section{Fundamentals of groups}
-Group theory is a branch of mathematics that study \emph{Groups}, groups are useful, for instance, to describe symmetries in a system. In physics, symmetries have a central role, a problem can be simplified in presence of symmetries and some physical quantities are directly correlated to symmetries. Therefore, the study of group is indeed important in theoretical physics.
+Group theory is a branch of mathematics that studies \emph{Groups}, groups are useful, for instance, to describe symmetries in a system. In physics, symmetries have a central role, a problem can be simplified in presence of symmetries and some physical quantities are directly correlated to symmetries. Therefore, the study of groups is indeed important in theoretical physics.
 Let us start from the beginning by defining what is a group
 \begin{dfn}
 Let $G$ be a set and $u$ a map $u:G\times G\to G$, then the pair $(G,u)$ is called a \textbf{group} if the following conditions hold
@@ -96,16 +96,16 @@ notice that the map $u$ is usually represented like the standard multiplication 
 \begin{dfn}
 A group $G$ is called \textbf{Abelian} if $gh=hg\quad \forall g,h\in G$.
 \end{dfn}
-A group can have several proprieties, one of the most important is the order of a group, which can be defined as follow
+A group can have several properties, one of the most important is the order of a group, which can be defined as follow
 \begin{dfn}
 The \textbf{order} of a group $G$ is the number of elements of $G$ (cardinality) and it is denoted as $|G|$. 
 \end{dfn}
-There are two cases, either the order of a group is finite (or countable infinite), and in this case the group is called discrete, or the order in not finite (uncountable infinite) and we say that the group is continuous. In order to clarify what is a group let us do some interesting examples of a group:
+There are two cases, either the order of a group is finite (or countably infinite), and in this case the group is called discrete, or the order in not finite (uncountably infinite) and we say that the group is continuous. In order to clarify what is a group let us give some interesting examples of a group:
 \begin{itemize}
 \item $G = \Z_2 = \{-1,1\}$ and $u$ the standard multiplication.\\
- We need to check that this is a group, first of all the map $u$ must be closed with respect to the set, this is easy to show, in fact there are only two elements and with the standard multiplication we know that multiplying $-1$ for $1$ or vice versa will always end up with -1. The standard multiplication is also associative. The neutral element of this group is $1$ and the inverse of $g\in G$ in this group is $g$ itself. Therefore, this is a finite group.
+ We need to check that this is a group, first of all $G$ must be closed with respect to $u$, this is easy to show, in fact there are only two elements and with the standard multiplication we know that multiplying $-1$ by $1$ or vice versa will always end up with -1. The standard multiplication is also associative. The neutral element of this group is $1$ and the inverse of $g\in G$ in this group is $g$ itself. Therefore, this is a finite group.
 \item $G = \{z\in \C : |z|=1\}$, $u$ standard multiplication.\\
-This is also a group, in fact we can represent a complex number with a complex exponential $z=e^{i\theta}$, multiplying two complex number will only change the phase of the number, not the modulus, thus multiplication is closed. It is also associative, the neutral element is $1$ and the inverse element is the complex conjugate $zz^* = |z|^2 = 1$.
+This is also a group, in fact we can represent a complex number with a complex exponential $z=e^{i\theta}$, multiplying two complex number will only change the phase of the number, not the modulus, thus it is closed. It is also associative, the neutral element is $1$ and the inverse element is the complex conjugate $zz^* = |z|^2 = 1$.
 \item $G = \{e,a,a^2,a^3\}$ with $a^4=e$ and also $a^0=e$, with the map defined as $u(a^k,a^l) = a^{k+l}$.\\
 It is closed, associative, the neutral element is $e$ and the inverses are: $aa^3 = e$, $a^2a^2=e$, $a^3a=e$. Therefore, this is a group of order 4.
 \item $G = GL(n,\C) = \{A\in M_n(\C): \text{det}A\neq 0\}$ and $u$ is matrix multiplication. Note that $GL(n,\C)$ is usually called General Linear group and is the set of $n\times n$ invertible matrices.\\
@@ -113,7 +113,7 @@ $u$ is closed, associative, the neutral element is $\mathbbm{1}$ and the inverse
 \item $G = \{U\in M_n : U^{-1}U = \I\}$, i.e. the set of unitary matrices with the matrix multiplication.\\
 The product of two unitary matrices is still unitary, so the map is closed. It is also associative, the neutral element is $\I$ and the inverse is $U^\dagger$. Therefore, it is a group.
 \end{itemize}
-A particular class of Group is the so called symmetric groups. Given $n$ elements $\overline{G}=\{1,2,\dots,n\}$, the symmetric group is defined as the set of permutations $\Pi:\overline{G}\to \overline{G}$, which we can write as $S_n = \{\Pi:\overline{G}\to \overline{G}: \text{where } \Pi \text{ is a bijective permutation}\}$. If $u$ is the concatenation of two permutations, then $(S_n,u)$ is a symmetric group. In fact $u$ is associative, the neutral element is the identity map, and the inverse element is $\Pi^{-1}$, which exist because permutations are bijective. Note also that the order of a symmetric group is $n!$, indeed there are $n!$ possible permutations in a set with $n$ elements. For instance, let us take $S_3$, we will denote the permutation as $\Pi_{1,2}\equiv (1,2)$, i.e the permutation that swap 1 with 2: $1\to 2,2\to 1,3\to3$, and $(1,2,3)$ as the permutation that changes every number like this: $1\to2,2\to3,3\to1$. Therefore the set $S_3$ is the following
+A particular class of Group is the so called symmetric groups. Given $n$ elements $\overline{G}=\{1,2,\dots,n\}$, the symmetric group is defined as the set of permutations $\Pi:\overline{G}\to \overline{G}$, which we can write as $S_n = \{\Pi:\overline{G}\to \overline{G}: \text{where } \Pi \text{ is a bijective permutation}\}$. If $u$ is the concatenation of two permutations, then $(S_n,u)$ is a symmetric group. In fact $u$ is associative, the neutral element is the identity map, and the inverse element is $\Pi^{-1}$, which exists because permutations are bijective. Note also that the order of a symmetric group is $n!$, indeed there are $n!$ possible permutations in a set with $n$ elements. For instance, let us take $S_3$, we will denote the permutation as $\Pi_{1,2}\equiv (1,2)$, i.e the permutation that swaps 1 with 2: $1\to 2,2\to 1,3\to3$, and $(1,2,3)$ as the permutation that changes every number like this: $1\to2,2\to3,3\to1$. Therefore the set $S_3$ is the following
 \[S_3 = \{\I,(1,2),(2,3),(1,2,3),(1,3,2),(1,3)\}\]
 there are of course $3!=6$ elements which correspond to the symmetry of a triangle, as we will see later in more detail.\\ 
 We can also define a dihedral group $D_n,n\geq 3$ which denotes the orthogonal symmetries of a regular polygon, which has $n$ vertices and is centered in the origin. The vertices are denoted by $V_0,V_1,\dots,V_{n-1}\in\R^2$ in counter clockwise direction. The symmetries of a polygon are: $C_n = R_{\frac{2\pi}{n}}$, that is a counter clockwise rotation of angle $2\pi/n$; $\sigma^{(i)}$, that is a reflection with respect to the line through $V_i$ and the center. Therefore, we can write $D_n$ as
@@ -146,10 +146,10 @@ To distinguish between subgroup and subset, there is a different notation, so if
 \item $SO(n) = \{A\in SL(n,\R) : A^\dagger A = \I\}\leq SL(n,\R)\leq GL(n,\C)$ 
 \item $U(n) = \{A\in GL(n,\C):A^\dagger A= \I \} \leq GL(n,\C)$
 \end{itemize}
-A property of subgroup is that if we take $H_i\leq G$ subgroups, with an index $i\in I$ the the intersection of the these subgroup is still a subgroup, that is
+A property of subgroups is that if we take $H_i\leq G$ subgroups, with an index $i\in I$ the the intersection of the these subgroup is still a subgroup, that is
 \[H = \bigcap_{i\in I} H_i \leq G.\]
-The proof is straightforward, we only need to check if the intersection has the proprieties of a group. Associative propriety is obvious. Since $H_i$ are a group, the neutral element is in each of them, so the neutral element is also in the intersection. The same argument goes for the inverse, $g\in H_i \implies g^{-1}\in H_i$, which means that $\forall g\in H \implies g^{-1}\in H$. And lastly with the same logic as before if $g,h\in H_i\implies gh \in H_i$ then $gh\in H$ if $g,h\in H$.\\
-As already said, subsets and subgroup are different, but it is also possible to generate a subgroup from a subset. Let $G$ be a group and $E\subset G$ a subset, then the subgroup generated by $E$ is
+The proof is straightforward, we only need to check if the intersection has the properties of a group. Associative property is obvious. Since $H_i$ are groups, the neutral element is in each of them, so the neutral element is also in the intersection. The same argument goes for the inverse, $g\in H_i \implies g^{-1}\in H_i$, which means that $\forall g\in H \implies g^{-1}\in H$. And lastly with the same logic as before if $g,h\in H_i\implies gh \in H_i$ then $gh\in H$ if $g,h\in H$.\\
+As already said, subsets and subgroups are different, but it is also possible to generate a subgroup from a subset. Let $G$ be a group and $E\subset G$ a subset, then the subgroup generated by $E$ is
 \[\braket{E} = \bigcap_{\substack{E\subseteq H\\H\leq G}} H,\]
 which is the smallest subgroup that contains $E$. It can be easily computed by taking the elements of $E$, all their inverse and all their products. For instance, let us consider the set $E = \{C_3\}$, the inverse of this element is $C_3^2$ and the neutral element is $\I$. Therefore the subgroup generated by $E$ is
 \[\braket{E} = \{C_3,C_3^2,\I\}.\]
@@ -164,13 +164,13 @@ Cyclic groups $G$ can be divided in two classes:
 \end{itemize}
 \subsection{Cosets and conjugacy classes}
 \begin{dfn}
-Let $H\leq G$ and $a\in G$, then the \textbf{left (right) coset} of $G$ is defined as
+Let $H\leq G$ and $a\in G$, then the \textbf{right (left) coset} of $G$ is defined as
 \[Ha = \{ha,h\in H\}\quad  (aH = \{ah,h\in H\})\]
 \end{dfn}
-Notice that the cosets are not necessarily subgroup, but two cosets of a subgroup $H$, either coincide or are disjoint. Mathematically: let $a,b\in G$ with $a\neq b$, if $\exists g\in bH,aH \implies aH = bH$. This can be proved by contradiction, suppose that $\exists g\in bH,aH$, this implies that $\exists h,h':g=bh=ah' \implies b = ah'h^{-1}$ and, because $H$ is a subgroup,
+Notice that the cosets are not necessarily subgroups, but two cosets of a subgroup $H$, either coincide or are disjoint. Mathematically: let $a,b\in G$ with $a\neq b$, if $\exists g\in bH,aH \implies aH = bH$. This can be proved by contradiction, suppose that $\exists g\in bH,aH$, this implies that $\exists h,h':g=bh=ah' \implies b = ah'h^{-1}$ and, because $H$ is a subgroup,
 $h'h^{-1}\in H$, so $b\in aH$. Now we can take $\widetilde{h}\in H$ and let us consider $b\widetilde{h} = ah'h^{-1}\widetilde{h} \in aH$, since this holds for every $\widetilde{h}$, then $bH\subseteq aH$. The same argument can be done in order to show that also $aH \subseteq bH$. Therefore the only possibility is that $aH = bH$.\\
 Furthermore, it is also clear that $\forall g\in G$, there exists $a\in G$ such that $g\in aH$. In fact, $H$ is a subgroup, so you can take $e\in H$, which implies $a=g$.\\
-Considering this last two observation, we have that, for any subgroup $H\leq G$, G can be written as
+Considering these last two observations, we have that, for any subgroup $H\leq G$, G can be written as
 \begin{equation}\label{Gdecomposition}G = \dot{\bigcup_{i\in I}}\,\, a_i H,\end{equation}
 where the dot represents disjoint union. This means that we can indeed decompose our group.
 \begin{thm}(Lagrange's theorem)
@@ -187,7 +187,7 @@ Let $N\leq G$ be a subgroup, then it is called \textbf{normal group} (or normali
 \[gNg^{-1} = N \quad \forall g\in G.\]
 (The notation could also be $GNG^{-1}=N$)
 \end{dfn}
-Any group has two trivial normalizer, namely $N=\{e\}$ and $N=G$. Moreover, if $G$ is abelian, then any subgroup of $G$ is a normalizer.
+Any group has two trivial normalizers, namely $N=\{e\}$ and $N=G$. Moreover, if $G$ is abelian, then any subgroup of $G$ is a normalizer.
 \begin{dfn}
 Let $G$ be a group, then the following group is called \textbf{central group} of $G$:
 \[Z = \{z\in G:zg=gz\, \forall g\in G\}\]
@@ -196,9 +196,9 @@ $Z$ is always not empty, in fact it contains at least the neutral element of $G$
 \begin{dfn}
 Conjugate elements $a,b\in G$ are called \textbf{conjugate} to each other if $\exists g\in G:a=gbg^{-1}$.
 \end{dfn}
-Before continuing, let us recall what a equivalent relation is. It is denoted by $\sim$ and it satisfies the following proprieties
+Before continuing, let us recall what an equivalence relation is. It is denoted by $\sim$ and it satisfies the following properties
 \begin{enumerate}
-	\item (reflex) $a \sim a$
+	\item (reflexive) $a \sim a$
 	\item (symmetric) $a\sim b \iff b\sim a$
 	\item (transitive) $a\sim b$ and $b\sim c$ $\implies a\sim c$
 \end{enumerate}
@@ -225,13 +225,13 @@ The proof is left to the reader as exercise.
 If $|G|$ is prime, then $n(K_i)=1\, \forall K_i \implies G$ is abelian.
 \end{coro}
 \section{Homomorphism and isomorphism}
-Before jumping into representation theory is necessary to define and understand what homomorphism and isomorphism are in group theory.
+Before jumping into representation theory is necessary to define and understand what homomorphisms and isomorphisms are in group theory.
 \begin{dfn}
 Let $G,H$ be groups, then a function $f:G\to H$ is called \textbf{group homomorphism} (GH) if
 \[f(g_1g_2) = f(g_1)f(g_2)\in H\quad \forall g_1,g_2\in G\]
 \end{dfn}
 \begin{dfn}
-Let $G,H$ be groups, then a function $f:G\to H$ is called \textbf{group isomorphism} (GI) if it is bijective. And we write $G\simeq H$
+Let $G,H$ be groups, then a function $f:G\to H$ is called \textbf{group isomorphism} (GI) if it is bijective and an homomorphism. And we write $G\simeq H$
 \end{dfn}
 Furthermore, the following hold
 \begin{enumerate}
@@ -241,7 +241,7 @@ Furthermore, the following hold
 \end{enumerate}
 Let us do some examples with of homomorphisms and isomorphisms.
 \begin{itemize}
-\item The determinant of a matrix $\text{det}:GL(n,\C) \to \C$ is a GH, in fact from the well known propriety of determinant $|AB| = |A||B|$.
+\item The determinant of a matrix $\text{det}:GL(n,\C) \to \C$ is a GH, in fact from the well known property of determinant $|AB| = |A||B|$.
 \item Let $G$ be a group and $g\in G$, the function $f:\Z \to G,k\mapsto g^k$ is a GH. In fact, $f(k_1k_2) = g^{k_1+k_2} = g^{k_1}g^{k_2} = f(k_1)f(k_2)$. (Recall that for the group $\Z$ we can choose as map the addition)
 \item the exponential $\R\to \R^+, x\mapsto e^x$ is a GI.
 \end{itemize}
@@ -251,27 +251,27 @@ Let $G,H$ be groups and $f:G\to H$ a GH, then we define the \textbf{kernel} of $
 Moreover, we define the \textbf{range} of $f$ as
 \[R(f) = \{f(a):a\in G\}\]
 \end{dfn}
-From this definitions it is easy to derive that the kernel is a subgroup of $G$, while the range is a subgroup of $H$. Indeed, if $g_1,g_2\in \text{Ker}(f)\implies f(g_1)=f(g_2)=e_H$, but due to the fact that $f$ is a GH, it is also true that $f(g_1g_2) = f(g_1)f(g_2)=e_H$. Therefore, $g_1g_2\in \text{Ker}(f)$. Furthermore, $e_G\in \text{Ker}(f)$, in fact $f(e_G) ) e_H$. And finally if $g\in \text{Ker}(f)\implies f(g^{-1}) = f(g)^{-1} = e_H^{-1} = e_H$, therefore $g^{-1}\in\text{Ker}(f)$. This prove the properties of a group and thus $\text{Ker}(f)\leq G$. Similarly can be demonstrated also that $R(f)\leq H$. Moreover, if $f$ is also injective, then $\text{Ker}(f) = \{e_G\}$ and if $f$ is surjective, then $R(f) = H$. \\
-In the first section of this chapter we did some examples of groups, in particular we studied the symmetric group, Its central importance in group theory is due to the following theorem that connects finite group to symmetric group through an isomorphic map. Furthermore, groups can be represented by matrices via an homomorphic map, as we will see later.
+From this definitions it is easy to derive that the kernel is a subgroup of $G$, while the range is a subgroup of $H$. Indeed, if $g_1,g_2\in \text{Ker}(f)\implies f(g_1)=f(g_2)=e_H$, but due to the fact that $f$ is a GH, it is also true that $f(g_1g_2) = f(g_1)f(g_2)=e_H$. Therefore, $g_1g_2\in \text{Ker}(f)$. Furthermore, $e_G\in \text{Ker}(f)$, in fact $f(e_G) ) e_H$. And finally if $g\in \text{Ker}(f)\implies f(g^{-1}) = f(g)^{-1} = e_H^{-1} = e_H$, therefore $g^{-1}\in\text{Ker}(f)$. This proves the properties of a group and thus $\text{Ker}(f)\leq G$. Similarly it can be demonstrated also that $R(f)\leq H$. Moreover, if $f$ is also injective, then $\text{Ker}(f) = \{e_G\}$ and if $f$ is surjective, then $R(f) = H$. \\
+In the first section of this chapter we gave some examples of groups, in particular we studied the symmetric group. Its central importance in group theory is due to the following theorem that connects finite groups to the symmetric group through an isomorphic map. Furthermore, groups can be represented by matrices via an homomorphic map, as we will see later.
 \begin{thm}
 (Theorem of Cayley for finite groups) Every finite group of order $n$ is isomorphic to a subgroup of the symmetric group $S_n$.
 \end{thm}
 The proof is based on the representation of a group with a group table. Each column and each row contains all elements of $G$. Hence, multiplication of a row or a columns with an element of $G$ corresponds to a permutation of the element of $G$. $g\mapsto \Pi_g, G\to H\leq S_n$ is a GI.
 \section{Representation of groups}
-The elements of a group can be very abstract object with which it could be difficult to work with. However, it is possible to map group into matrices that can be manipulated more easily. This mapping is the aim of representation theory, it can be proved that a group has infinity many representation. Let us start as usual, by defining a representation.
+The elements of a group can be very abstract objects with which it could be difficult to work. However, it is possible to map groups into matrices that can be manipulated more easily. This mapping is the aim of representation theory, it can be proved that a group has infinitely many representations. Let us start as usual, by defining a representation.
 \begin{dfn}
-A representation $D$ of a group $G$ is a GH $D:G\to GL_k(V)$, where $GL_k(V)$ is the group of general linear function over a vector space $V$. 
+A representation $D$ of a group $G$ is a GH $D:G\to GL_k(V)$, where $GL_k(V)$ is the group of general linear functions over a vector space $V$. 
 \end{dfn} 
-It can be showed that $GL_k(V)$ is isomorphic to $GL_n(\C)$, which are invertible matrices. Therefore, $D$ maps the group $G$ into invertible $n\times n$ matrices, where $n= \text{dim}(n)$.
-Some remarks, $V$ is called carrier (representation) space and $\text{dim}(n)$ is called the dimension of the representation. As notation we use $D_G$ or $D(G)$ for the representation and in the rest of this work we will consider only finite dimensional representation. \\
-Every group $G$ has a \emph{trivial representation}, that is $D:G\to \C \simeq GL_1,g\mapsto 1$. It easy to check that this is indeed a representation, however all the information about the group is lost. This trivial representation is one dimensional, but it is also possible to define a trivial representation in higher dimension (cazzo, molto utile).
+It can be showed that $GL_k(V)$ is isomorphic to $GL_n(\C)$, which are invertible matrices. Therefore, $D$ maps the group $G$ into invertible $n\times n$ matrices, where $n= \text{dim}(V)$.
+Some remarks, $V$ is called carrier (representation) space and $\text{dim}(V)$ is called the dimension of the representation. As notation we use $D_G$ or $D(G)$ for the representation and in the rest of this work we will consider only finite dimensional representation. \\
+Every group $G$ has a \emph{trivial representation}, that is $D:G\to \C \simeq GL_1,g\mapsto 1$. It easy to check that this is indeed a representation, however all the information about the group is lost. This trivial representation is one dimensional, but it is also possible to define a trivial representation in higher dimension.
 \begin{dfn}
 A representation $D$ is called \textbf{faithful} if $D$ is injective.
 \end{dfn}
-As already said, a group can have different representation, but two representation  $D_1:G\to GL(V),D_2:G\to GL(W)$ are called equivalent if there exists a mapping $f:W\to V$ which is an isomorphism
+As already said, a group can have different representations, but two representations  $D_1:G\to GL(V),D_2:G\to GL(W)$ are called equivalent if there exists a mapping $f:W\to V$ which is an isomorphism
 \[D_1(g) = f\circ D_2(g)\circ f^{-1}\quad \forall g\in G.\]
-Before looking at some example, notice that, since $D$ is a GH, it holds that $D(g_1g_2)=D(g_1)D(g_2)$ for any representation $D$. Therefore, $D(g)$ can be computed from $D(g_i)$, where $g_i$ are the generating element, $G =\braket{\{g_i\}}$. For instance, let us consider $S_3 \simeq D_3 = \braket{\{\sigma^1,C_3\}}$, we can compute $D_3(C_3^2) = D_3(C_3)D_3(C_3)$, where $D_3(C_3)$ is known. The same for $D_3(C_3^{-1})=D_3(C_3)^{-1}$. \\
-Let us go through some instances of representation of the group $S_3$.
+Before looking at some examples, notice that, since $D$ is a GH, it holds that $D(g_1g_2)=D(g_1)D(g_2)$ for any representation $D$. Therefore, $D(g)$ can be computed from $D(g_i)$, where $g_i$ are the generating elements, $G =\braket{\{g_i\}}$. For instance, let us consider $S_3 \simeq D_3 = \braket{\{\sigma^1,C_3\}}$, we can compute $D_3(C_3^2) = D_3(C_3)D_3(C_3)$, where $D_3(C_3)$ is known. The same for $D_3(C_3^{-1})=D_3(C_3)^{-1}$. \\
+Let us go through some instances of representations of the group $S_3$.
 \begin{itemize}
 \item A two dimensional representation of $S_3$ could be the following $D_2:S_3 \to GL_2$:
 \[C_3 \mapsto \begin{pmatrix}
@@ -288,7 +288,7 @@ which is a trivial representation.
 \item Another non trivial one dimensional representation is
 \[C_3\mapsto 1 \qquad \sigma^1 \mapsto -1.\]
 The number are not chosen randomly, but they are the determinant of previous matrices. This representation is not faithful and can be generalized. In fact, it can be demonstrated that if $D:F\to GL_n$ is a representation of $G$, then $D:G\to \C, g\mapsto \text{det}(D(g))$ is a one dimensional representation of $G$.
-\item A three dimensional representation can be done by adding one row and one columns to the two dimensional representation, as follow
+\item A three dimensional representation can be done by adding one row and one column to the two dimensional representation, as follows
 \[C_3 \mapsto \begin{pmatrix}
   \cos\left(\frac{2\pi}{3}\right) & \sin\left(\frac{2\pi}{3}\right) & 0\\
   -\sin\left(\frac{2\pi}{3}\right) & \cos\left(\frac{2\pi}{3}\right) & 0\\
@@ -298,7 +298,7 @@ The number are not chosen randomly, but they are the determinant of previous mat
 0 & 1 & 0\\
 0 &0 &1
  \end{pmatrix}.\]
-This can be also done for higher dimensional representation, but they are not very interesting. However, there are representation called irreducible with which every representation can be constructed, as we will see later.
+This can be also done for higher dimensional representations, but they are not very interesting. However, there are representations called irreducible with which every representation can be constructed, as we will see later.
 \item There is a more interesting three dimensional representation of $S_3$. First let us recall that the action of a group with representation $D_3:S_3\to GL(\C^3)$ can be written using the standard basis $\{\mathbf{e_i}\}$ of $\C^3$, in fact $D_3(g)\mathbf{e_i} =\mathbf{e_g}$
 \begin{multline}\label{regularrepresentationD3}D_3(g_1) = \begin{pmatrix}
   0 & 1 & 0\\
@@ -327,10 +327,10 @@ This can be also done for higher dimensional representation, but they are not ve
 \subsection{Regular representations}\label{section:regularrepresentation}
 A regular representation is defined for any finite group, and if $|G|=n$, then the representation $R(p)\in M_{n,n}(\R)$. Moreover, the regular representation contains in a sense all the representation.
 \begin{dfn}
-Let $G$ be a group, then a \textbf{regular representation} $R:G\to GL_n(\R)$ is defined as follow
+Let $G$ be a group, then a \textbf{regular representation} $R:G\to GL_n(\R)$ is defined as follows
 \[R(g_i)_{kj} = \begin{cases}
 1\qquad \text{if}\,\,\, g_kg_j^{-1} = g_i\\
-0 \qquad \text{else}
+0 \qquad \text{otherwise}
 \end{cases}\]
 \end{dfn}
 \InsertBoxR{0}{
@@ -349,9 +349,9 @@ It is possible to prove that $R$ is a representation, this is left as an exercis
 Let $D:G\to GL(V)$ be a representation, then $D$ is called \textbf{unitary} if
 \[D(g)^\dagger = D(g)^{-1} = D(g^{-1})\quad \forall g \in G\]
 \end{dfn}
-Let us consider two representation $D_1,D_2$ of $G$, then $D_1\oplus D_2:G \to GL(V_1\oplus V_2),g\mapsto D_1(g)\oplus D_2(g)$ is a representation. Therefore, it is possible to build representation. This also means that there exist infinitely many representation, as we are going to see, for finite groups only very few representations are necessary to construct all of them. Notice that if $D_1\oplus D_2$ is a representation, also $S(D_1\oplus D_2)S^{-1}$ is a representation for any $S\in GL(\text{dim}(V_1)+\text{dim}(V_2))$. 
+Let us consider two representations $D_1,D_2$ of $G$, then $D_1\oplus D_2:G \to GL(V_1\oplus V_2),g\mapsto D_1(g)\oplus D_2(g)$ is a representation. Therefore, it is possible to build representations. This also means that there exist infinitely many representations, as we are going to see, for finite groups only very few representations are necessary to construct all of them. Notice that if $D_1\oplus D_2$ is a representation, also $S(D_1\oplus D_2)S^{-1}$ is a representation for any $S\in GL(\text{dim}(V_1)+\text{dim}(V_2))$. 
 \subsection{Irreducible representations}
-We have already remarked that a representation can be build with others. However, there are some representations that constitute the basic block for building other representations, and cannot be obtained from other representation. This representations are called irreducible representations. Before jumping in their definition, we need to discuss a particular class of spaces.
+We have already remarked that a representation can be built with others. However, there are some representations that constitute the basic blocks for building other representations, and cannot be obtained from other representations. These representations are called irreducible representations. Before jumping into their definition, we need to discuss a particular class of spaces.
 \begin{dfn}
 Let $(D,V)$ be a representation, then a subspace $W\subseteq V$ is called \textbf{invariant subspace} if
 \begin{enumerate}[i.]
@@ -360,7 +360,7 @@ Let $(D,V)$ be a representation, then a subspace $W\subseteq V$ is called \textb
 \end{enumerate}
 \end{dfn}
 \begin{dfn}
-A representation $(D,V)$ is called \textbf{irreducible} if there exist no non-trivial invariant subspace, i.e. there exist no invariant subspace $W$ with $W\neq\{0\}$ and $W\neq V$. Otherwise $(D,V)$ is called \textbf{reducible}.
+A representation $(D,V)$ is called \textbf{irreducible} if there exist no non-trivial invariant subspaces, i.e. there exists no invariant subspace $W$ with $W\neq\{0\}$ and $W\neq V$. Otherwise $(D,V)$ is called \textbf{reducible}.
 \end{dfn}
 Invariant subspaces are important because we can actually work inside them, in fact, let $W$ be an invariant subspace of a representation $(D,V)$, then $D$ restricted to $W$ is a representation
 \[D\big|_W:G\to GL(W)\qquad g\mapsto D\big|_W(g).\]
@@ -377,21 +377,21 @@ If we apply our matrix on the vector $(1,0)^{T}$ we obtain $(1,0)^{T}$. Therefor
 Nevertheless, for this example we considered a non finite group, but we will see that for a finite group, any representation is completely reducible. \\
 A relevant case for physics is when $V$ is a Hilbert space, and therefore there exists a scalar product on such space, therefore the orthogonal complement $W^\perp$ is well defined and can be used.
 \begin{lem}\label{lemmautile}
-A representation $(D,V)$ is completely reducible if and only if for any invariant subspace $W$, there exist an invariant subspace $W'$ such that $W\oplus W' = V$
+A representation $(D,V)$ is completely reducible if and only if for any invariant subspace $W$, there exists an invariant subspace $W'$ such that $W\oplus W' = V$
 \end{lem}
 \hspace{-1.4em}\textbf{Proof:}\\
-$\implies$) $(D,V)$ is completely reducible $\implies V= V_1\oplus V_2\oplus \dots V_n$, where $V_i$ are invariant subspaces and does not contain any non-trivial invariant subspace. If $W$ is an invariant subspace, then $W\cap V_i$ is either $\{0\}$ or $V_i$ this implies that $W = \bigoplus_{i\in I} V_i$ for some indexes $I$, thus $W^\perp = \bigoplus_{i\notin I} V_i \implies W^\perp$ is invariant.\\
-$\impliedby$) The proof is by induction on the dimension of $V$. If $\text{dim}(V) = 1$, the statement is obvious $V= V_1$.Now let us assume that it is true for $\text{dim}(V) = d$, and we prove that it is true for $\text{dim}(V) = d+1$. $V$ is either irreducible or exists an invariant subspace $W\subset V$ with $1\leq \text{dim}(W)\leq d$. Per assumption $\exists W' : V = W\oplus W'$ and $W'$ is irreducible and also $\text{dim}(W') \leq d$ which implies that $W,W'$ are completely irreducible, i.e. $V$ is completely reducible. \hfill\ensuremath{\square}\\
-As example let us study the symmetric group $S_3$, recall the three dimensional representation $D_3(g)$ which can be written as $D_3(g)e_i = e_{g_i}$. Our goal is to find an invariant subspace $W\subset \R^3$ such that $D_g W = W$ $\forall g\in G$. For instance
+$\implies$) $(D,V)$ is completely reducible $\implies V= V_1\oplus V_2\oplus \dots V_n$, where $V_i$ are invariant subspaces and does not contain any non-trivial invariant subspace. If $W$ is an invariant subspace, then $W\cap V_i$ is either $\{0\}$ or $V_i$ this implies that $W = \bigoplus_{i\in I} V_i$ for some indices $I$, thus $W^\perp = \bigoplus_{i\notin I} V_i \implies W^\perp$ is invariant.\\
+$\impliedby$) The proof is by induction on the dimension of $V$. If $\text{dim}(V) = 1$, the statement is obvious $V= V_1$.Now let us assume that it is true for $\text{dim}(V) = d$, and we prove that it is true for $\text{dim}(V) = d+1$. $V$ is either irreducible or there exists an invariant subspace $W\subset V$ with $1\leq \text{dim}(W)\leq d$. By assumption $\exists W' : V = W\oplus W'$ and $W'$ is irreducible and also $\text{dim}(W') \leq d$ which implies that $W,W'$ are completely irreducible, i.e. $V$ is completely reducible. \hfill\ensuremath{\square}\\
+As an example let us study the symmetric group $S_3$, recall the three dimensional representation $D_3(g)$ which can be written as $D_3(g)e_i = e_{g_i}$. Our goal is to find an invariant subspace $W\subset \R^3$ such that $D_g W = W$ $\forall g\in G$. For instance
 \[W_1 = \text{span}\left\{\begin{pmatrix}1\\1\\1\end{pmatrix}\right\}\]
 is an invariant subspace with dimension one, in fact applying a permutation to this space does not change it. Another is 
 \[W_2 = \left\{\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}:\sum_i x_i = 0\right\}.\]
-This is a two dimensional subspace. The point now is: can we reduce further this space? If the answer is no we decomposed $D_3$, otherwise we can further decompose it. The answer is no, there is not, and we can show it. Consider an hypothetical invariant subspace $\overline{W}$ of $W$ that is non trivial. The dimension of $\overline{W}$ must be one and $D_g\overline{W}\propto \overline{W}$, for instance we we take the permutation $2\to1$
+This is a two dimensional subspace. The point now is: can we reduce further this space? If the answer is no we decomposed $D_3$, otherwise we can further decompose it. The answer is no, there is not, and we can show it. Consider a hypothetical invariant subspace $\overline{W}$ of $W$ that is non trivial. The dimension of $\overline{W}$ must be one and $D_g\overline{W}\propto \overline{W}$, for instance we we take the permutation $2\to1$
 \[D_g \begin{pmatrix}w_1\\w_2\\w_3\end{pmatrix} \propto \begin{pmatrix}w_2\\w_1\\w_3\end{pmatrix}\quad \forall g\in G.\]
-This must holds for every permutation. Therefore, $\omega_1 \propto \omega_2\propto \omega_3$ and $\sum_i \omega_i = 0$. The only solution for $\omega_i$ is $\omega_i =0$ that is a trivial space. In conclusion, $W_1$ e $W_2$ are the only invariant subspaces which implies that $D_3$ is completely reducible with $V = W_1 \oplus W_2$ and more important $D = D\big|_{W_1} \oplus D\big|_{W_2}$. We will return on this example in the next section.
+This must hold for every permutation. Therefore, $\omega_1 \propto \omega_2\propto \omega_3$ and $\sum_i \omega_i = 0$. The only solution for $\omega_i$ is $\omega_i =0$ that is a trivial space. In conclusion, $W_1$ e $W_2$ are the only invariant subspaces which implies that $D_3$ is completely reducible with $V = W_1 \oplus W_2$ and more importantly $D = D\big|_{W_1} \oplus D\big|_{W_2}$. We will return on this example in the next section.
 \section{Finite groups}
 \begin{thm}
-Any irreducible representation of a finite group is finite dimension.
+Any irreducible representation of a finite group has finite dimension.
 \end{thm}
 \hspace{-1.4em}\textbf{Proof:}\\
 The proof can be done by contradiction. Suppose that $V$ is infinite dimensional and irreducible, then we can define the space $W_a = \{D_g \ket{a}:g\in G,a\in V\}$. $W_a$ is finite because $G$ is finite and it is invariant which is a contradiction of the assumption.\hfill\ensuremath{\square}
@@ -404,7 +404,7 @@ Let $D$ be a representation of $G$, we define the positive\footnote{in fact $\br
 \begin{equation}\label{questarobaqui}
 D_h^\dagger T D_h = D_h^\dagger \sum_{g\in G} D_g^\dagger D_g D_h = \sum_{g\in G} D_h^\dagger D_g^\dagger D_gD_h = \sum_{g\in G} D_g^\dagger D_g  \equiv T,
 \end{equation}
-whereas in the last step we used the fact that $D_gD_h = D_{gh}$, and we have already showed that $gh$ is just a permutation of the elements, therefore the sum over every term $D_{gh}$ is equivalent as the sum $D_g$ for the commutativity of the sum. Obviously, equation \eqref{questarobaqui} holds for every $h\in G$. Now we define $S =T^{\frac{1}{2}}$, which is well defined because $T$ is positive\footnote{$T= T^\dagger\implies \exists u,d:T=udu^\dagger$, where $d$ is diagonal. That is $T^{1/2}=U\sqrt{D}U^\dagger$}, and we rewrite equation \eqref{questarobaqui}
+where in the last step we used the fact that $D_gD_h = D_{gh}$, and we have already showed that $gh$ is just a permutation of the elements, therefore the sum over every term $D_{gh}$ is equivalent to the sum $D_g$ by the commutativity of the sum. Obviously, equation \eqref{questarobaqui} holds for every $h\in G$. Now we define $S =T^{\frac{1}{2}}$, which is well defined because $T$ is positive\footnote{$T= T^\dagger\implies \exists u,d:T=udu^\dagger$, where $d$ is diagonal. That is $T^{1/2}=U\sqrt{D}U^\dagger$}, and we rewrite equation \eqref{questarobaqui}
 as $D_h^\dagger S^2 D_h = S^2$, which can be rewritten as $D_h^\dagger S = S^2 D_h^{-1}S^{-1}$. Multiplying this by $S^{-1}$ leads to $S^{-1}D_h^\dagger S = SD_h^{-1}S^{-1}$ and finally taking the inverse $(S^{-1}D_h^\dagger S)^{-1} = S^{-1}D_hS$, in the right hand side we can write instead of $S$, $S^\dagger$, since they are the same and we obtain the final result
 $(S^{-1}D_h^\dagger S)^{-1} = (S^{-1}D_h^\dagger S)^\dagger$ \hfill(?:/)\ensuremath{\square}
 \begin{thm}
@@ -412,37 +412,37 @@ Any unitary representation of a finite group is completely reducible
 \end{thm}
 \hspace{-1.4em}\textbf{Proof:}\\
 Let $W$ be invariant, and let $a\in W^\perp,b\in W,p\in G$, then $\braket{a|D_g|b} = \braket{D_g^\dagger a|b} = \braket{D_{g^{-1}}a|b}\implies D_g W^\dagger \subseteq W^\dagger$. 
-According to lemma \ref{lemmautile} a representation $(D,V)$ is completely reducible if and only if for all invariant subspace $W$ also $W^\perp$ is invariant. \hfill(?:/)\ensuremath{\square}\\
+According to lemma \ref{lemmautile} a representation $(D,V)$ is completely reducible if and only if for every invariant subspace $W$ also $W^\perp$ is invariant. \hfill(?:/)\ensuremath{\square}\\
 In summary, we showed the following propositions
 \begin{enumerate}
-	\item Any representation of finite group is finite
-	\item Any representation of finite group is equivalent to an unitary group
+	\item Any representation of a finite group is finite
+	\item Any representation of a finite group is equivalent to a unitary group
 	\item Any unitary representation is completely reducible
 \end{enumerate}
-as corollary of these we have the most important result
+as a corollary of these we have the most important result
 \begin{center}\fbox{\begin{minipage}{\dimexpr.5\textwidth-2\fboxsep-2\fboxrule\relax}
 \centering
-Any representation of finite group \\is completely reducible
+Any representation of a finite group \\is completely reducible
 \end{minipage}}
 \end{center}
 That is, if $G$ is finite, let us consider $D:G\to GL(V)$, then 
 \[\exists S\in GL(V): D_g = S\begin{pmatrix}D_1(g)\\&D_2(g)\\&&\ddots\end{pmatrix}S^{-1},\]
 where $D_i$ are irreducible representations.\\
-Let us continue with the usual example of the representation of $S_3$. We have already showed how it can be decomposed into two invariant space $W_1$ and $W_2$, now let us try to find the representations restricted to those spaces. This can be done projecting the operator into the subspace
+Let us continue with the usual example of the representation of $S_3$. We have already showed how it can be decomposed into two invariant spaces $W_1$ and $W_2$, now let us try to find the representations restricted to those spaces. This can be done projecting the operator into the subspace
 \[D_3(g)\big|_{W_1} = P_{W_1}D_3(g)P_{W_1} = \ket{w_1}\bra{w_1}D_3(G)\ket{w_1}\bra{w_1} = \ket{w_1}\bra{w_1}\quad \forall g\in G.\]
-In fact a permutation over a state with the same components does not change anything. Hence $D_3(g)\big|_{W_1}$ is the trivial representation $D_3(g)\big|_{W_1}:G\to 1$. More interesting is of course the space $W_2$, consider a base of this space, for instance
+In fact a permutation over a state with the same components does not change anything. Hence $D_3(g)\big|_{W_1}$ is the trivial representation $D_3(g)\big|_{W_1}:G\to 1$. More interesting is of course the space $W_2$, consider a basis of this space, for instance
 \[v_1 = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\-1\end{pmatrix}\qquad v_2 = \frac{1}{\sqrt{6}}\begin{pmatrix}-1\\2\\-1\end{pmatrix}.\]
 Then the projector is $P_{W_2} = \ket{v_1}\bra{v_1} + \ket{v_2}\bra{v_2}$, hence
 \[D_3(g)\big|_{W_2} = P_{W_2}D_3(g)P_{W_2} = \sum_{ij} \ket{v_i}\bra{v_i}D_3(g)\ket{v_j}\bra{v_j},\]
-which can be calculated by hand or every permutation. A faster way is to consider The decomposition of $D$ as
+which can be calculated by hand for every permutation. A faster way is to consider The decomposition of $D$ as
 \[D_s(g) = S \begin{pmatrix}D_3(g)\big|_{W_1}&0\\0& D_3(g)\big|_{W_2} \end{pmatrix}S^{-1} =S \begin{pmatrix}1&0\\0& D_3(g)\big|_{W_2} \end{pmatrix}S^{-1}.\]
-$D_3(g)\big|_{W_2} $ must be a two dimensional representation of $S_3$ which we have already calculated in previous example.\\
-Let us finish this section showing why it is possible to decompose a representation in a direct sum of restricted representations. For ease we will show the case of $S_3$, where the vector space is decomposed as $W =W_1\oplus W_2 = W_1 \oplus W_1^\perp$. Consider the projector $P_1 = \displaystyle\sum_i ^{\text{dim}(W_1)}\ket{v_i}\bra{v_i}$, where $\{v_i\}$ is a basis of $W_1$ and respectively $P_2 = \displaystyle\sum_i ^{\text{dim}(W_2)}\ket{v_i}\bra{v_i}$, where $\{v_i\}$ is a basis of $W_2$. From the completeness of the basis we can write $\I = P_1 + P_2$, thus we can also write $D(g) = \I D(g) \I$, substituting the identity operator with the sum of projectors yields to
+$D_3(g)\big|_{W_2} $ must be a two dimensional representation of $S_3$ which we have already calculated in a previous example.\\
+Let us finish this section by showing why it is possible to decompose a representation as a direct sum of restricted representations. For ease we will show the case of $S_3$, where the vector space is decomposed as $W =W_1\oplus W_2 = W_1 \oplus W_1^\perp$. Consider the projector $P_1 = \displaystyle\sum_i ^{\text{dim}(W_1)}\ket{v_i}\bra{v_i}$, where $\{v_i\}$ is a basis of $W_1$ and respectively $P_2 = \displaystyle\sum_i ^{\text{dim}(W_2)}\ket{v_i}\bra{v_i}$, where $\{v_i\}$ is a basis of $W_2$. From the completeness of the basis we can write $\I = P_1 + P_2$, thus we can also write $D(g) = \I D(g) \I$, substituting the identity operator with the sum of projectors yields
 \begin{multline}
 D(g) = (P
 _1 + P_2)D(g)(P_1 + P_2) = (P_1D(g) + P_2D(g))(P_1 + P_2)\\ P_1D(g)P_1 +P_1D(g)P_2+P_2D(g)P_1+P_2D(g)P_2.
 \end{multline}
-In this expression all the mixed terms are zero, since $W_1$ and $W_2$ are invariant subspaces, hence $D(g)W_1 \subseteq W_1$ and the same for $W_2$, i.e. $D(g)P_1$ will be in $W_1$ for all $g$ in $G$. Therefore, if you project $W_1$ into $W_2$ you will obtain 0, since the space are orthogonal. In conclusion we get
+In this expression all the mixed terms are zero, since $W_1$ and $W_2$ are invariant subspaces, hence $D(g)W_1 \subseteq W_1$ and the same for $W_2$, i.e. $D(g)P_1$ will be in $W_1$ for all $g$ in $G$. Therefore, if you project $W_1$ into $W_2$ you will obtain 0, since the spaces are orthogonal. In conclusion we get
 \[D(g) =P_1D(g)P_1 + P_2D(g)P_2,\]
 which is exactly the same as $D(g) = D(g)\big|_{W_1} \oplus  D(g)\big|_{W_2}$.
 \section{Schur's lemma}
@@ -459,7 +459,7 @@ The same holds for the range, if $R(A)$ is an invariant subspace under $D_2$, th
 \[R(A) = \begin{cases} \{0\} \qquad \text{or}\\
 D_2\end{cases}. \]
 Let us take a look at the case $\text{Ker}(A) = D_1$ and $R(A) = 0$, this means that every element of $D_1$ is mapped to 0, therefore $A=0$. In the other case $\text{Ker}(A) = \{0\}$ means that $A$ is injective and $R(A) = D_2$ means that $A$ is surjective, hence $A$ is bijective, so it is a isomorphism.\\
-Therefore, in order to prove the lemma we must prove the $\text{Ker}(A)$ and $R(A)$ are invariant subspace.
+Therefore, in order to prove the lemma we must prove the $\text{Ker}(A)$ and $R(A)$ are invariant subspaces.
 \begin{itemize}
 	\item $\text{Ker}(A)$ is an invariant subspace of $V_1$:
 	\[D_1(g)\text{Ker}(A) = \text{Ker}(A) \qquad \forall g\in G,\]
@@ -469,7 +469,7 @@ Therefore, in order to prove the lemma we must prove the $\text{Ker}(A)$ and $R(
 	\[AD_1(g) \ket{x} = D_1(g)A\ket{x} \qquad \forall g\in G,\forall b\in R,\]
 	but we can notice that $AD_1(g) \ket{x}\in R(A)$, and also $A\ket{x}\in R(A)$, thus $D_1(g)R(A) \subseteq R(A)$.
 \end{itemize}\hfill\ensuremath{\square}\\
-This lemma has a particular case, i.e. when $V_1=V_2$, which is particularly interesting for physics. In fact it can be used to diagonalize operator on Hilbert space very easily, as we will see in an example later. 
+This lemma has a special case, i.e. when $V_1=V_2$, which is particularly interesting for physics. In fact it can be used to diagonalize operators on Hilbert space very easily, as we will see in an example later. 
 \begin{lem}\label{lemmafigo}
 Let $D:G\to GL(V)$ be an irreducible representation of $G$, and $A\in \mathfrak{L}(V)$, such that
 \[AD(g) = D(g)A \qquad \forall g \in G,\]
@@ -483,20 +483,20 @@ Any irreducible finite dimension representation of an abelian group is one dimen
 \end{thm}
 The proof is left as an exercise.
 \section{Applications}
-In quantum mechanics, it is common to diagonalize a certain operator in order to obtain the possible outcomes of a measurement. Moreover, it is also useful to diagonalize an operator, especially the Hamiltonian, since the evolution of a state is dictated by the evolution operator $U(t) = e^{-iHt}$. Group theory, in particular representation, and all the theory we developed so far can help to perform this diagonalization. Let us make the hypothesis that there is a symmetry on the system which commute with the Hamiltonian, i.e. $H D(g) = D(g)H$, then if $D(g)$ is irreducible, we can express our Hamiltonian as $H = \lambda\I$ for the lemmas of the previous section. This is not very interesting, but if $D(g)$ is reducible, we can write it as $S \oplus_i D_i(g)S^{-1}$, where $D_i(g)$ are now irreducible and can be written as $D_i(g) = \lambda_i \I$. This will give us the eigenvalues of the Hamiltonian. For instance we can consider the following matrix
+In quantum mechanics, it is common to diagonalize a certain operator in order to obtain the possible outcomes of a measurement. Moreover, it is also useful to diagonalize an operator, especially the Hamiltonian, since the evolution of a state is dictated by the evolution operator $U(t) = e^{-iHt}$. Group theory, in particular representation, and all the theory we developed so far can help to perform this diagonalization. Let us make the hypothesis that there is a symmetry on the system which commutes with the Hamiltonian, i.e. $H D(g) = D(g)H$, then if $D(g)$ is irreducible, we can express our Hamiltonian as $H = \lambda\I$ by the lemmas of the previous section. This is not very interesting, but if $D(g)$ is reducible, we can write it as $S \oplus_i D_i(g)S^{-1}$, where $D_i(g)$ are now irreducible and can be written as $D_i(g) = \lambda_i \I$. This will give us the eigenvalues of the Hamiltonian. For instance we can consider the following matrix
 \[A = \begin{pmatrix}
 a&b&b\\b&a&b\\b&b&a
 \end{pmatrix}\qquad a,b\in \C.\]
 It is easy to check that $AD_3(g) = D_3(g)A$.We have already seen the decomposition of $D_3$ $D_3 = S(D_1\oplus D_2)S^{-1}$, we can use this relation in the previous and we found
 \[AS(D_1\oplus D_2)S^{-1} = S(D_1\oplus D_2)S^{-1}A,\]
-we can multiply this expression for $S$ on the right and $S^{-1}$ on the left, so we obtain
+we can multiply this expression by $S$ on the right and $S^{-1}$ on the left, so we obtain
 \begin{equation}\label{comm}S^{-1}AS(D_1\oplus D_2) = (D_1\oplus D_2)S^{-1}AS.\end{equation}
-$S^{-1}AS$ is not know, but we can express it as a matrix with unknown coefficients
+$S^{-1}AS$ is not known, but we can express it as a matrix with unknown coefficients
 \[B = S^{-1}AS = \begin{pmatrix}
 B_{11}&B_{12}\\
 B_{21}&B_{22}
 \end{pmatrix}\qquad B_{11}\in\C,B_{22}\in M_{2,2},B_{1,2}\in M_{1,2},B_{2,1}\in M_{2,1}.\]
-Notice that $B$ commute with $D_3(g)$ as shown in equation \eqref{comm}. Now, we can calculate the matrix multiplication between $B$ and $D_3$ of equation \eqref{comm}:
+Notice that $B$ commutes with $D_3(g)$ as shown in equation \eqref{comm}. Now, we can calculate the matrix multiplication between $B$ and $D_3$ of equation \eqref{comm}:
 \[\begin{pmatrix}
 B_{11}&B_{12}\\
 B_{21}&B_{22}
@@ -532,25 +532,25 @@ where we used lemma \ref{lemmafigo}. In conclusion we found that
 \end{pmatrix},\]
 which is the matrix $A$ diagonalized.
 \section{Orthogonality relations}
-Let $(D^\alpha,W^\alpha)$ and $(D^\beta,W^\beta)$ be two irreducible representation of $G$ and $X\in \mathfrak{L}(W^\alpha,W^\beta)$, we define the following operator 
+Let $(D^\alpha,W^\alpha)$ and $(D^\beta,W^\beta)$ be two irreducible representations of $G$ and $X\in \mathfrak{L}(W^\alpha,W^\beta)$, we define the following operator 
 \[A =\sum_{g\in G} D_g^\alpha X D_{g^{-1}}^\beta,\]
 which has the following propriety
 \[D_h ^\alpha A = A D_h^\beta \quad \forall h\in G.\]
 This can be proved easily, in fact
 \[A D_h^\beta = \sum_{g\in G} D_g^\alpha X D_{g^{-1}}^\beta  D_h^\beta = \sum_{g\in G} D_g^\alpha X D_{g^{-1}h}^\beta,\]
-but since we are in a group $g^{-1}h\in G$, and since we are summing all over the elements we have that it is the same to write $g^{-1}h$ or $g$ in the sum. The same argument can be made for $D_h ^\alpha A$ and the equality is verified. Now if $D^\alpha = D^\beta$, we can use lemma \ref{lemmafigo} and therefore $A = \lambda \I$, or in the case that $D^\alpha$ and $D^\beta$ are inequivalent, for Schur's lemma $A=0$. We can write both of this cases as $A = \lambda \I \delta_{\alpha\beta}$ using the definition we gave of $A$ we can write
+but since we are in a group $g^{-1}h\in G$, and since we are summing over all the elements we have that it is the same to write $g^{-1}h$ or $g$ in the sum. The same argument can be made for $D_h ^\alpha A$ and the equality is verified. Now if $D^\alpha = D^\beta$, we can use lemma \ref{lemmafigo} and therefore $A = \lambda \I$, or in the case that $D^\alpha$ and $D^\beta$ are inequivalent, by Schur's lemma $A=0$. We can write both of these cases as $A = \lambda \I \delta_{\alpha\beta}$ using the definition we gave of $A$ we can write
 \begin{equation}\label{cherobba}\sum_{g\in G} D_g^\alpha X D_{g^{-1}}^\beta = \lambda \I \delta_{\alpha\beta},\end{equation}
-taking the trace on both side of this equation leads to
+taking the trace on both sides of this equation leads to
 \begin{equation}\lambda \delta_{\alpha,\beta}\text{Tr}(\I) = \sum_{g\in G} \text{Tr}(D_g^\alpha X D_{g^{-1}}^\beta)\end{equation}
 for $\alpha =\beta$ we have 
 \[\lambda \text{Tr}(\I) = \sum_{g\in G} \text{Tr}(D_g X D_{g^{-1}})\]
-we can use the propriety of a trace such that we can move the factors inside the trace, and since $D_g D_{g^{-1}}=\I$, we obtain
+we can use the property of the trace that we can move the factors inside the trace, and since $D_g D_{g^{-1}}=\I$, we obtain
 \begin{equation}\label{lambdafromtrace}\lambda \text{Tr}(\I) = \sum_{g\in G} \text{Tr}(X) \implies \lambda = \frac{\text{Tr}(X)}{\text{dim}(W)}|G|.\end{equation}
 This equation holds for any $X$, so we can choose a basis in $W^\alpha$, consider $X$ in that basis, and then choose $X_{ij} = \delta_{ij}\delta_{jm}$. If we insert this expression in equation \eqref{cherobba} we obtain
 \[\lambda \I \delta_{\alpha,\beta} = \sum_{g\in G}\left(D_g^\alpha\right)_{il}\left(D_{g^{-1}}^\beta\right)_{mj} = \frac{|G|}{\text{dim}(W^{\alpha})} \delta_{\alpha\beta}\delta_{ij}\delta_{ml}.\]
 In the case where $D^\beta$ is a unitary representation the previous equation can be written as
 \[\sum_{g\in G}\left(D_g^\alpha\right)_{il}\left(D_{g}^\beta\right)_{mj}^\dagger = \frac{|G|}{\text{dim}(W^{\alpha})} \delta_{\alpha\beta}\delta_{ij}\delta_{ml}.\]
-These expressions depend on the basis, unless we consider the equation with the trace, this leads at the definition of character of representations, which aims to characterize how many irreducible representations exist and how they can be characterized.
+These expressions depend on the basis, unless we consider the equation with the trace, this leads to the definition of character of representations, which aims to characterize how many irreducible representations exist and how they can be characterized.
 \begin{dfn}
 Let $D:G\to \text{GL}(V)$ be a representation of a group $G$, the character of this representation is defined as
 \[\chi:G \to \C \quad g\to \text{Tr}(D_g) = \chi(g) = \sum_i D_{ii}(g).\]
@@ -563,41 +563,41 @@ The character has the following proprieties
 \item $\forall g\in G, \chi(g^{-1}) = \chi(g)^*$, Proof: $\chi(g^{-1}) = \text{Tr}(D(g^{-1})) = \text{Tr}(SD(g^{-1})S^{-1}) = \text{Tr}(\widetilde{D}(g^{-1}))$, where $\widetilde{D}$ is a unitary representation from theorem \ref{unitaryrepresentation}. $\text{Tr}(\widetilde{D}(g^{-1})) = \text{Tr}(\widetilde{D}(g)^\dagger) = \chi(g)^*$
 \item $\chi_{D_1 \oplus D_2}(g) = \chi_{D_1}(g) + \chi_{D_2}(g)$
 \end{itemize}
-Another property of orthogonality can be found considering the previous orthogonality relations and with $i=l$, $j=m$, and summing over $i$ and $j$, we can obtain the following
+Another property of orthogonality can be found by considering the previous orthogonality relations and with $i=l$, $j=m$, and summing over $i$ and $j$, we can obtain the following
 \begin{equation}\label{nonsonooriginale}\sum_{g\in G}\chi^\alpha (g) \chi^\beta(g^{-1}) = \sum_{g\in G} \chi^\alpha (g) \chi^\beta(g)^* = \delta{\alpha\beta}\frac{|G|}{\text{Dim}(W^\alpha)}\sum_{ij}\delta_{ij} = \delta_{\alpha\beta}|G|,\end{equation}
-where we used the fact that $\sum_{ij}\delta{ij} = \text{Dim}(W^\alpha)$. We can notice that the left hand side of the equations is equivalent to a scalar product, hence the character of inequivalent irreducible representations are orthogonal. Introducing the following notation
+where we used the fact that $\sum_{ij}\delta{ij} = \text{Dim}(W^\alpha)$. We can notice that the left hand side of the equations is equivalent to a scalar product, hence the characters of inequivalent irreducible representations are orthogonal. Introducing the following notation
 \[\overrightarrow{\chi}  = \begin{pmatrix}\chi_D(g_1)\\ \vdots \\ \chi_D(g_n)\end{pmatrix},\]
 we can rewrite equation \eqref{nonsonooriginale} as
 \[\braket{\overrightarrow{\chi}^\alpha ,\overrightarrow{\chi}^\beta} = \delta_{\alpha\beta}|G|.\]
-Since $\overrightarrow{\chi}$ is a $G$-dimensional vector, we have that there can be at most $|G|$ inequivalent irreducible representation. The vector $\overrightarrow{\chi}$ can be reduced with the conjugacy classes, in fact as already stated, elements of a conjugacy class have the same characteristic. Therefore we define the following
+Since $\overrightarrow{\chi}$ is a $G$-dimensional vector, we have that there can be at most $|G|$ inequivalent irreducible representations. The vector $\overrightarrow{\chi}$ can be reduced with the conjugacy classes, in fact as already stated, elements of a conjugacy class have the same characteristic. Therefore we define the following
 \[\overline{\chi}_D = \begin{pmatrix} \sqrt{C_1} \chi_D(g_1) \\ \vdots \\ \sqrt{C_r} \chi_D(g_r)
 \end{pmatrix},\]
 where $r$ is the number of different conjugacy classes, and $C_i$ is the number of elements of a conjugacy class. The orthogonality relation becomes
 \[\braket{\overrightarrow{\chi}^\alpha ,\overrightarrow{\chi}^\beta} = \braket{\overline{\chi}^\alpha,\overline{\chi}^\beta} = \delta_{\alpha\beta}|G|.\]
-Furthermore, $\overline{\chi}_D$ is a $r$-dimensional vector, thus there exist at most $r$ different conjugacy classes. 
+Furthermore, $\overline{\chi}_D$ is an $r$-dimensional vector, thus there exist at most $r$ different conjugacy classes. 
 \begin{thm}
 The number of irreducible representations of a finite group coincides with the number of different conjugacy classes.
 \end{thm}
 \section{Analysis of representations}
-The idea of character introduced can be very useful in the study of representations, we already saw that any representation $D$ of a finite group is completely reducible, i.e. $D = \bigoplus_i D_i = m_1 D_1 + m_2D_m \dots = \sum_\alpha m_\alpha D^\alpha$, where $D_i$ are irreducible representations. Moreover we saw that $\chi^\alpha \perp \chi^\beta$ for $D^\alpha$ and $D^\beta$. From the proprieties of the character we have that $\chi_D =\sum_\alpha \chi^\alpha$ and the equivalent vector expression $\overrightarrow{\chi}_D =\sum_\alpha \overrightarrow{\chi}^\alpha$. If we take the scalar product with $\overrightarrow{\chi}^\beta$ and with the orthogonality relation, we obtain
+The idea of character introduced can be very useful in the study of representations, we already saw that any representation $D$ of a finite group is completely reducible, i.e. $D = \bigoplus_i D_i = m_1 D_1 + m_2D_m \dots = \sum_\alpha m_\alpha D^\alpha$, where $D_i$ are irreducible representations. Moreover we saw that $\chi^\alpha \perp \chi^\beta$ for $D^\alpha$ and $D^\beta$. From the properties of the character we have that $\chi_D =\sum_\alpha \chi^\alpha$ and the equivalent vector expression $\overrightarrow{\chi}_D =\sum_\alpha \overrightarrow{\chi}^\alpha$. If we take the scalar product with $\overrightarrow{\chi}^\beta$ and with the orthogonality relation, we obtain
 \[m_\beta = \frac{\braket{\overrightarrow{\chi}^\beta|\overrightarrow{\chi}_D}}{|G|}.\]
-This result can be used to prove a useful criterium\\
+This result can be used to prove a useful criterion\\
 \textbf{Criterion for characters of irreducible representation}\\Let $D$ be a representation of $G$, then $D$ is irreducible $\iff$ $\braket{\overrightarrow{\chi}_{D}|\overrightarrow{\chi}_{D}} = \sum_{g\in G}|\chi_D(g)|^2 = |G|$.\\ The proof is the following:\\
 $\implies)$ If $D$ is irreducible, then $D = m_1 D_1$ with $m_1= 1$, then $1 = \frac{\braket{\overrightarrow{\chi}_D|\overrightarrow{\chi}_D}}{|G|} \implies \braket{\overrightarrow{\chi}_D|\overrightarrow{\chi}_D} = |G|$\\
 $\impliedby)$ $\chi_D = \sum_\alpha m_\alpha\chi^\alpha \implies \braket{\chi_D|\chi_D} = \sum m_\alpha m_\beta \braket{\chi_\alpha|\chi_\beta}$, now we use the orthogonality relation $\braket{\chi_\alpha|\chi_\beta} = \delta_{\alpha\beta}|G|$ and we get $\sum m_\alpha m_\beta \braket{\chi_\alpha|\chi_\beta} = |G| \sum m_\alpha^2 = |G| \implies \sum m_\alpha^2 = 1$. Since $m\alpha\in \mathbb{N}, \exists! \alpha : m_\alpha = 1$, while $m_\beta = 0 $ for $\beta\neq \alpha$ which implies that $D$ is irreducible.\hfill\ensuremath{\square}\\
-For small groups this criterion can be very useful, for instance, consider $S_3$ and its three dimensional representation $D_3$ defined with equation \eqref{regularrepresentationD3}, we can easily check that $\chi_{D_3}(e) = 3$, while $\chi_{D_3}(g_1) = \chi_{D_3}(g_2) = \chi_{D_3}(g_3)=1$, and $\chi_{D_3}(g_4) = \chi_{D_3}(g_5) = 0$. With these values we can check whether $D_3$ is irreducible or not. If it is irreducible, then $\braket{\chi_{D_3}|\chi_{D_3}} = |G| = 6$, but summing the squares of all the characters calculated we get $\braket{\overrightarrow{\chi}_{D_3}|\overrightarrow{\chi}_{D_3}} = 12$, thus $D_3$ is not irreducible. With the criterion we can also draw some interesting conclusion, i.e. let us consider $D_3$ as sum of irreducible representations $D_3 = \bigoplus_\alpha m_\alpha D_\alpha$, then
+For small groups this criterion can be very useful, for instance, consider $S_3$ and its three dimensional representation $D_3$ defined with equation \eqref{regularrepresentationD3}, we can easily check that $\chi_{D_3}(e) = 3$, while $\chi_{D_3}(g_1) = \chi_{D_3}(g_2) = \chi_{D_3}(g_3)=1$, and $\chi_{D_3}(g_4) = \chi_{D_3}(g_5) = 0$. With these values we can check whether $D_3$ is irreducible or not. If it is irreducible, then $\braket{\chi_{D_3}|\chi_{D_3}} = |G| = 6$, but summing the squares of all the characters calculated we get $\braket{\overrightarrow{\chi}_{D_3}|\overrightarrow{\chi}_{D_3}} = 12$, thus $D_3$ is not irreducible. With the criterion we can also draw some interesting conclusions, i.e. let us consider $D_3$ as sum of irreducible representations $D_3 = \bigoplus_\alpha m_\alpha D_\alpha$, then
 \[\braket{\overrightarrow{\chi}_{D_3}|\overrightarrow{\chi}_{D_3}} = \sum_\alpha m_\alpha^2 \braket{\overrightarrow{\chi_{D_i}}|\overrightarrow{\chi}_{D_i}} = |G|\sum_{\alpha}m_\alpha^2, \]
 that with the values $|G| = 6$ and $\braket{\overrightarrow{\chi}_{D_3}|\overrightarrow{\chi}_{D_3}}=12$ can be written as $12 = 6\sum_{\alpha}m_\alpha^2$, and since $m_\alpha$ are integers, the only solution is $m_1 = m_2 = 1, m_i = 0$ for $i\neq 1,2$. In conclusion the representation $D_3$ can be written as sum of two irreducible representations $D_3 = D_1 \oplus D_2$.\\
 We can also study the character of a regular representation $R$, that recalling section \ref{section:regularrepresentation} is defined as
 \[R(g_i)_{kj} = \begin{cases}
 1\qquad \text{if}\,\,\, g_kg_j^{-1} = g_i\\
-0 \qquad \text{else}
+0 \qquad \text{otherwise}
 \end{cases}.\]
-We want to prove that $R = \bigoplus_{i}m_i D_i$, where $m_i = \text{Dim}(D_i)$, and $D_i$ is a irreducible representation. The character of a regular representation can be easily calculated $\chi_R(g_i) = \text{Tr}(R(g_i)) = \delta_{i1}|G|$, where $g_1 = e$. We can express the regular representation as a sum: $\overrightarrow{\chi}_R = \sum_i m_i \overrightarrow{\chi}_i$, where $ \overrightarrow{\chi}_i$ is a simple character. We can also calculate the following scalar product 
+We want to prove that $R = \bigoplus_{i}m_i D_i$, where $m_i = \text{Dim}(D_i)$, and $D_i$ is an irreducible representation. The character of a regular representation can be easily calculated $\chi_R(g_i) = \text{Tr}(R(g_i)) = \delta_{i1}|G|$, where $g_1 = e$. We can express the regular representation as a sum: $\overrightarrow{\chi}_R = \sum_i m_i \overrightarrow{\chi}_i$, where $ \overrightarrow{\chi}_i$ is a simple character. We can also calculate the following scalar product 
 \[\braket{\overrightarrow{\chi}_R| \overrightarrow{\chi}_j} = \sum_i [\chi_R(g_i)]^* \chi_j(g_i) = |G| \chi_j(e) = |G|\text{dim}(D_j) \equiv |G| n_j,\]
 where we used the fact that $\chi_R(g_i) \delta_{i1}|G|$. Moreover if we use $\overrightarrow{\chi}_R = \sum_i m_i \overrightarrow{\chi}_i$ the same scalar product is
 \[\braket{\overrightarrow{\chi}_R| \overrightarrow{\chi}_j} = m_j \braket{\overrightarrow{\chi}_j|\overrightarrow{\chi}_j} =|G| m_j.\]
-From the last two equations we obtain the searched result $m_j = n_j \equiv \text{dim}(D_j)$. Therefore, the regular representation contains all irreducible representations of $G$ with multiplicity $n_i = \text{dim}(D_i)$. From the character of a regular representation we can also find the following useful relation
+From the last two equations we obtain the desired result $m_j = n_j \equiv \text{dim}(D_j)$. Therefore, the regular representation contains all irreducible representations of $G$ with multiplicity $n_i = \text{dim}(D_i)$. From the character of a regular representation we can also find the following useful relation
 \[\chi_R(g_i) = \sum_{j=1} n_j \chi_j(g_i) = \delta_{i1}|G| \implies |G| = \sum_{j=1} n_j^2\].
 Using this fact we can state that for instance
 \begin{itemize}
@@ -609,21 +609,21 @@ Using this fact we can state that for instance
 If a group $G$ has only one-dimensional representations, then $G$ is abelian.
 \end{thm}
 The theorem is not the case of $S_3$, since it has a two-dimensional representation.
-\section{Summary of finite groups and their representation}
-The important results of the previous sections can be summarized as follow.\\
+\section{Summary of finite groups and their representations}
+The important results of the previous sections can be summarized as follows.\\
 Consider a finite group $G =\{g_1,\dots,g_n\}$, since it is a group $g_ig_j = g_k$. A representation is a function $D:G\to GL(n)$ with the property $D(hg) = D(h)D(g)$. Moreover, we have the following result
 \begin{itemize}
 \item Any representation is equivalent to a unitary group $D(g)^\dagger = D(g^{-1}) = D(g)^{-1}$.
 \item Any unitary representation is completely reducible.
-\item Any representation is completely reducible, i.e. $D = \bigoplus D_i$, with $D_i$ irreducible representation. 
-\item There exist $r$ irreducible representation, where $r$ is the number of conjugacy classes.
+\item Any representation is completely reducible, i.e. $D = \bigoplus D_i$, with $D_i$ irreducible representations. 
+\item There exist $r$ irreducible representations, where $r$ is the number of conjugacy classes.
 \item $D_i$ is irreducible $\iff$ $\braket{\chi_i|\chi_i} = |G|$
 \item $\overrightarrow{\chi}_D  =\sum_i m_i \overrightarrow{\chi}_i$, and $\overrightarrow{\chi}_R  =\sum_i n_i \overrightarrow{\chi}_i$, $D_R = \bigoplus_i n_i D^i$.
 \end{itemize}
 \section{Lie Group}
-A Lie group has a centrl role in physics, so in this chapter we will give a short introduction. We only treated finite group, but many of the obtained result cold be generalized to continuous group $G$, that is a group whose order is uncountably infinite. The elements of $G$ can be parametrized as $g(\mathbf{a}) = g(a_1,a_2,\dots,a_n)$, with $\mathbf{a}\in\R^n$. For the multiplication of two elements, we have that $g(\mathbf{a})g(\mathbf{b})=g(\mathbf{c})$, where $\mathbf{c} = f(\mathbf{a},\mathbf{b})$.
+A Lie group has a central role in physics, so in this chapter we will give a short introduction. We only treated finite groups, but many of the obtained result cold be generalized to continuous groups $G$, that is group whose order is uncountably infinite. The elements of $G$ can be parametrized as $g(\mathbf{a}) = g(a_1,a_2,\dots,a_n)$, with $\mathbf{a}\in\R^n$. For the multiplication of two elements, we have that $g(\mathbf{a})g(\mathbf{b})=g(\mathbf{c})$, where $\mathbf{c} = f(\mathbf{a},\mathbf{b})$.
 \begin{dfn}
-Let $G = \{(a_1,a_2,\dots,a_n)\}$, be a continuous group, and $f$ be an analytic function, i.e. there exist a converging Taylor series for $f$, then $G$ is called an $n$-parameters \textbf{Lie Group}.
+Let $G = \{(a_1,a_2,\dots,a_n)\}$, be a continuous group, and $f$ be an analytic function, i.e. there exists a converging Taylor series for $f$, then $G$ is called an $n$-parameter \textbf{Lie Group}.
 \end{dfn}
 \begin{dfn}
 A Lie group is called compact if its parameter space is compact in $\R^n$.
@@ -632,13 +632,13 @@ Examples of Lie groups are
 \begin{itemize}
 	\item $U(1) = \{e^{i\alpha}\}$, with $\alpha\in[0,2\pi]$, which is a compact Lie group.
 	\item $GL_n$ is also a Lie group.
-	\item $SU(2) = \{e^{i\alpha\sigma_x}e^{i\beta\sigma_y}e^{i\alpha\sigma_x}\}$ is a three-parameters compact Lie group.
+	\item $SU(2) = \{e^{i\alpha\sigma_x}e^{i\beta\sigma_y}e^{i\alpha\sigma_x}\}$ is a three-parameter compact Lie group.
 	\item $SO(2) =\{A\in SL(2,\R): AA^\dagger = A^\dagger A = \I\}$, this is a one-parameter compact Lie group, which we can parametrize as $R(\phi) = \begin{pmatrix}
 	\cos(\phi) & \sin(\phi)\\
 	-\sin(\phi) & \cos(\phi)\\
 	\end{pmatrix}$
 \end{itemize}
-The idea of Lie was to consider infinitesimal transformations, any elements of the group can be decomposed into those infinitesimal transformations.\\
+The idea of Lie was to consider infinitesimal transformations, any element of the group can be decomposed into those infinitesimal transformations.\\
 We can also find the generator of the last example, we can expand in a Taylor series $R(\phi)$ around $\phi=0$
 \[R(\phi) = R(0) + \frac{dR}{d\phi}\Bigg|_{\phi=0} \phi + \frac{1}{2}\frac{d^2R}{d\phi^2}\Bigg|_{\phi=0} \phi^2 +\dots,\]
 the first derivative is easy to calculate 
@@ -649,4 +649,6 @@ the first derivative is easy to calculate
 and similarly the other derivatives, we find that
 \[R(\phi) = \I + X\phi + \frac{1}{2}X^2\phi^2+\dots = e^{\phi X} = e^{i\phi \sigma_y}.\]
 $X$ is called the generator of the group.
+
+%\include{matrixanalysis}
 \end{document}
